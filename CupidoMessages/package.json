@@ -1,0 +1,21 @@
+{
+  "name": "cupido-messages",
+  "version": "0.0.1",
+  "description": "Grab Cupido messages from internet most famous website",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm i -g phantomjs",
+    "start": "node server.js"
+  },
+  "repository": "",
+  "author": "Gianluca Cirone",
+  "license": "MIT",
+  "dependencies": {
+    "request": "2.47.0",
+    "phantomjs": "1.9.8",
+    "cheerio": "0.17.0",
+    "jquery": "2.1.1"
+  }
+}
