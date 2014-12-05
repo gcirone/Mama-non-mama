@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Ni-A4-OkH">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="PT_Serif-Caption-Web-Italic.ttf">
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
+        </mutableArray>
+        <mutableArray key="PT_Serif-Web-Italic.ttf">
+            <string>PTSerif-Italic</string>
+            <string>PTSerif-Italic</string>
+            <string>PTSerif-Italic</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--ContainerVC-->
+        <scene sceneID="crz-nz-WyE">
+            <objects>
+                <viewController storyboardIdentifier="ContainerVC" title="ContainerVC" id="0cD-wi-1Gc" userLabel="ContainerVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nJv-A6-UBu"/>
+                        <viewControllerLayoutGuide type="bottom" id="3gz-cl-4jY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iio-lX-pNx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="grc-V8-bxv" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-small" translatesAutoresizingMaskIntoConstraints="NO" id="SIl-CL-SAg">
+                                <rect key="frame" x="90" y="20" width="154" height="104"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgC-Cu-WgL" userLabel="settings">
+                                <rect key="frame" x="286" y="8" width="29" height="29"/>
+                                <state key="normal" image="settings-btn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-C4-xJu" userLabel="sound">
+                                <rect key="frame" x="6" y="8" width="29" height="29"/>
+                                <state key="normal" image="sound-ico">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gianluca" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bF-Zq-UVt">
+                                <rect key="frame" x="16" y="509" width="77" height="28"/>
+                                <fontDescription key="fontDescription" name="PTSerif-Italic" family="PT Serif" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIf-7S-oRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115" y="377"/>
+        </scene>
+        <!--SettingsSexVC-->
+        <scene sceneID="qrA-AT-JOU">
+            <objects>
+                <viewController storyboardIdentifier="SettingsSexVC" title="SettingsSexVC" id="Dka-Nx-9yF" userLabel="SettingsSexVC" customClass="SettingsSexVC" customModule="Mama_non_mama" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yDH-Ey-Iv9"/>
+                        <viewControllerLayoutGuide type="bottom" id="vZ2-eN-dP9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mfl-HX-BzK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ttD-YW-IBj" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-lu-Ggv">
+                                <rect key="frame" x="232" y="8" width="80" height="27"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="-21" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="53" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="chiudi" image="close-btn">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-big" translatesAutoresizingMaskIntoConstraints="NO" id="Zaq-ty-qJr">
+                                <rect key="frame" x="34" y="15" width="262" height="176"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line-artistic" translatesAutoresizingMaskIntoConstraints="NO" id="7HX-NW-rAF">
+                                <rect key="frame" x="38" y="255" width="245" height="21"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sei una / uno" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceH-qE-Brq">
+                                <rect key="frame" x="88" y="280" width="135" height="33"/>
+                                <fontDescription key="fontDescription" name="PTSerif-Italic" family="PT Serif" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vP3-aD-jgF">
+                                <rect key="frame" x="16" y="330" width="120" height="170"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="26"/>
+                                <inset key="titleEdgeInsets" minX="-86" minY="140" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="DONNA" image="woman-sign">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sexSelect:" destination="Dka-Nx-9yF" eventType="touchUpInside" id="4sF-MI-w4f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bn-Dx-cwm">
+                                <rect key="frame" x="184" y="310" width="120" height="189"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="26"/>
+                                <inset key="titleEdgeInsets" minX="-110" minY="159" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="3" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="UOMO" image="man-sign">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sexSelect:" destination="Dka-Nx-9yF" eventType="touchUpInside" id="bPc-1O-LEk"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line-artistic" translatesAutoresizingMaskIntoConstraints="NO" id="VRL-QU-rgs">
+                                <rect key="frame" x="38" y="515" width="245" height="21"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L’AMORE È UN GIOCO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMn-b6-nxZ">
+                                <rect key="frame" x="12" y="199" width="296" height="41"/>
+                                <fontDescription key="fontDescription" name="PTSerif-Italic" family="PT Serif" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h7W-wG-iMf"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="9Zp-ES-HxJ" kind="push" identifier="SettingsFlower" id="K3m-7i-6Gt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P6y-HB-kGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="609" y="1092"/>
+        </scene>
+        <!--SettingsFlowerVC-->
+        <scene sceneID="ks4-UO-4EG">
+            <objects>
+                <viewController storyboardIdentifier="SettingsFlowerVC" title="SettingsFlowerVC" id="9Zp-ES-HxJ" customClass="SettingsFlowerVC" customModule="Mama_non_mama" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K9l-3m-MMp"/>
+                        <viewControllerLayoutGuide type="bottom" id="iUP-KM-LC9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7un-Ey-qUO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="xRn-dB-h6X" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-small" translatesAutoresizingMaskIntoConstraints="NO" id="oIh-K7-5Qc">
+                                <rect key="frame" x="90" y="20" width="154" height="104"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="89P-rv-G7V">
+                                <rect key="frame" x="232" y="8" width="80" height="27"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="-21" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="53" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="chiudi" image="close-btn">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="set-8B-qnc">
+                                <rect key="frame" x="10" y="10" width="70" height="22"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="indietro" image="back-arrow">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="rM4-FO-Ki2" kind="unwind" unwindAction="unwindToSettingsSexVC:" id="O0v-Ui-ofd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="m15-u4-TXA"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gut-4N-RlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rM4-FO-Ki2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1082" y="1092"/>
+        </scene>
+        <!--SettingsUserVC-->
+        <scene sceneID="8kC-tp-0dw">
+            <objects>
+                <viewController storyboardIdentifier="SettingsUserVC" title="SettingsUserVC" id="yP5-8Y-kFk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fGQ-MV-G06"/>
+                        <viewControllerLayoutGuide type="bottom" id="3wf-es-chH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vvA-zL-cco">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-jV-lif" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-small" translatesAutoresizingMaskIntoConstraints="NO" id="k1m-Cq-a6s">
+                                <rect key="frame" x="90" y="20" width="154" height="104"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="QvF-w2-zit">
+                                <rect key="frame" x="10" y="10" width="70" height="22"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="indietro" image="back-arrow">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="UP9-Sb-aHj">
+                                <rect key="frame" x="232" y="8" width="80" height="27"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="-21" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="53" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="chiudi" image="close-btn">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L14-W7-E3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1488" y="1092"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ags-9K-L0p">
+            <objects>
+                <viewController id="4pq-TV-NSh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rrS-uo-g6Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="aXc-lj-N6A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fgj-6K-ZVl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWe-Qw-cn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115" y="1799"/>
+        </scene>
+        <!--SettingsNC-->
+        <scene sceneID="4Mt-49-pkP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="9Ni-A4-OkH" userLabel="SettingsNC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wyy-Sf-ScM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dka-Nx-9yF" kind="relationship" relationship="rootViewController" id="fae-H6-hjt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skc-Cz-LXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115" y="1092"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back-arrow" width="11" height="18"/>
+        <image name="bg" width="375" height="667"/>
+        <image name="close-btn" width="27" height="27"/>
+        <image name="line-artistic" width="245" height="21"/>
+        <image name="logo-big" width="262" height="176"/>
+        <image name="logo-small" width="154" height="104"/>
+        <image name="man-sign" width="104" height="103"/>
+        <image name="settings-btn" width="29" height="29"/>
+        <image name="sound-ico" width="24" height="31"/>
+        <image name="woman-sign" width="85" height="125"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
