@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D811777E1A4F041A004C94C4 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811777D1A4F041A004C94C4 /* ContainerVC.swift */; };
+		D81177801A4F3320004C94C4 /* SettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811777F1A4F3320004C94C4 /* SettingsSegue.swift */; };
+		D81404961A41D1AD00C63019 /* SettingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81404951A41D1AD00C63019 /* SettingsApp.swift */; };
+		D81404981A41D9FB00C63019 /* SettingsUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81404971A41D9FB00C63019 /* SettingsUserVC.swift */; };
+		D8F82DDE1A4238F400E8A5F8 /* flowers-woman.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F82DDD1A4238F400E8A5F8 /* flowers-woman.plist */; };
+		D8F82DE01A426E5400E8A5F8 /* flowers-man.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F82DDF1A426E5400E8A5F8 /* flowers-man.plist */; };
 		E11598811A20DD4F00110A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11598801A20DD4F00110A5F /* AppDelegate.swift */; };
 		E11598861A20DD4F00110A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11598841A20DD4F00110A5F /* Main.storyboard */; };
 		E11598881A20DD4F00110A5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11598871A20DD4F00110A5F /* Images.xcassets */; };
@@ -30,6 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D811777D1A4F041A004C94C4 /* ContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		D811777F1A4F3320004C94C4 /* SettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSegue.swift; sourceTree = "<group>"; };
+		D81404951A41D1AD00C63019 /* SettingsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsApp.swift; sourceTree = "<group>"; };
+		D81404971A41D9FB00C63019 /* SettingsUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUserVC.swift; sourceTree = "<group>"; };
+		D8F82DDD1A4238F400E8A5F8 /* flowers-woman.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "flowers-woman.plist"; sourceTree = "<group>"; };
+		D8F82DDF1A426E5400E8A5F8 /* flowers-man.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "flowers-man.plist"; sourceTree = "<group>"; };
 		E115987B1A20DD4F00110A5F /* Mama non mama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mama non mama.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115987F1A20DD4F00110A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11598801A20DD4F00110A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +79,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D8EB77AB1A4F3B2500A8C425 /* DeasyGame */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DeasyGame;
+			sourceTree = "<group>";
+		};
 		E11598721A20DD4F00110A5F = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +110,10 @@
 		E115987D1A20DD4F00110A5F /* Mama non mama */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB77AB1A4F3B2500A8C425 /* DeasyGame */,
 				E134B4661A225BC8003DC6ED /* Settings */,
 				E11598801A20DD4F00110A5F /* AppDelegate.swift */,
+				D811777D1A4F041A004C94C4 /* ContainerVC.swift */,
 				E11598841A20DD4F00110A5F /* Main.storyboard */,
 				E11598871A20DD4F00110A5F /* Images.xcassets */,
 				E11598A81A20E26800110A5F /* Assets */,
@@ -130,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				E11598A91A20E26E00110A5F /* Fonts */,
+				D8F82DDD1A4238F400E8A5F8 /* flowers-woman.plist */,
+				D8F82DDF1A426E5400E8A5F8 /* flowers-man.plist */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -148,8 +171,11 @@
 		E134B4661A225BC8003DC6ED /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D81404951A41D1AD00C63019 /* SettingsApp.swift */,
 				E134B4671A2274DB003DC6ED /* SettingsSexVC.swift */,
 				E134B4691A227A5B003DC6ED /* SettingsFlowerVC.swift */,
+				D81404971A41D9FB00C63019 /* SettingsUserVC.swift */,
+				D811777F1A4F3320004C94C4 /* SettingsSegue.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -235,10 +261,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E11598A61A20E25900110A5F /* PT_Serif-Web-Italic.ttf in Resources */,
+				D8F82DDE1A4238F400E8A5F8 /* flowers-woman.plist in Resources */,
 				E11598A41A20E25900110A5F /* PT_Serif-Caption-Web-Italic.ttf in Resources */,
 				E11598861A20DD4F00110A5F /* Main.storyboard in Resources */,
 				E11598A51A20E25900110A5F /* PT_Serif-Caption-Web-Regular.ttf in Resources */,
 				E11598A71A20E25900110A5F /* PT_Serif-Web-Regular.ttf in Resources */,
+				D8F82DE01A426E5400E8A5F8 /* flowers-man.plist in Resources */,
 				E11598881A20DD4F00110A5F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81177801A4F3320004C94C4 /* SettingsSegue.swift in Sources */,
+				D811777E1A4F041A004C94C4 /* ContainerVC.swift in Sources */,
+				D81404981A41D9FB00C63019 /* SettingsUserVC.swift in Sources */,
 				E134B4681A2274DB003DC6ED /* SettingsSexVC.swift in Sources */,
 				E11598811A20DD4F00110A5F /* AppDelegate.swift in Sources */,
+				D81404961A41D1AD00C63019 /* SettingsApp.swift in Sources */,
 				E134B46A1A227A5B003DC6ED /* SettingsFlowerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

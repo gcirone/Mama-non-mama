@@ -9,24 +9,27 @@
 import UIKit
 
 class SettingsSexVC: UIViewController {
+    
+    @IBOutlet weak var closeSettings: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("SettingsSexVC")
+        //SettingsApp.VC["SettingsSexVC"] = self
+        //println("SettingsSexVC")
+        
+        //hide close button
+        closeSettings.hidden = !SettingsApp.hasLaunchedSettings        
 
     }
     
-    @IBAction func sexSelect(sender: AnyObject) {
-        let button = sender as UIButton
+    @IBAction func sexSelect(button: AnyObject) {
         if button.tag == 1 {
-            println("sex is woman")
+            SettingsApp.CNF["sex"] = "woman"
         } else if button.tag == 2 {
-            println("sex is man")
+            SettingsApp.CNF["sex"] = "man"
         }
-        
         self.performSegueWithIdentifier("SettingsFlower", sender: self)
-        
     }
 
     
@@ -37,7 +40,7 @@ class SettingsSexVC: UIViewController {
     }
     
     @IBAction func unwindToSettingsSexVC(sender: UIStoryboardSegue) {
-        println("unwindToSettingsSexVC")
+        //println("unwindToSettingsSexVC")
     }
     
     
