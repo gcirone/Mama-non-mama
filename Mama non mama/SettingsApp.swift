@@ -55,6 +55,8 @@ class SettingsApp {
         }
     }
     
+    
+    
     class var VC: [String:Any] {
         get { return instacesVC }
         set { instacesVC = newValue }
