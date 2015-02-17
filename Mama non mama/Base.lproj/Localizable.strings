@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Mama non mama
+
+  Created by Gianluca, Cirone on 15/02/15.
+  Copyright (c) 2014 Gianluca Cirone. All rights reserved.
+ 
+  NSLocalizedString("KEY", nil)
+  ${PRODUCT_NAME}
+ 
+*/
+
+"M'ama, non m'ama" = "Loves me, loves me not";
+
+"MI AMA!" = "";
+
+"NON MI AMA!" = "";
+
+"SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA" = "";
+
+"AMA" = "";
+
+"NON AMA" = "";
+
+"Rimuovi Banner" = "";
+
+"Pagamento banner fallito!!! Per favore riprova più tardi." = "";
+
+"Aggiungi Fiori" = "";
+
+"Pagamento fiori fallito!!! Per favore riprova più tardi." = "";

@@ -26,19 +26,19 @@ class SettingsApp {
     }
     
     class var IS_IPHONE4 : Bool {
-        return (UIScreen.mainScreen().bounds.size.height == 480)
+        return (SettingsApp.IS_IPHONE && UIScreen.mainScreen().bounds.size.height == 480)
     }
     
     class var IS_IPHONE5 : Bool {
-        return (UIScreen.mainScreen().bounds.size.height == 568)
+        return (SettingsApp.IS_IPHONE && UIScreen.mainScreen().bounds.size.height == 568)
     }
     
     class var IS_IPHONE6 : Bool {
-        return (UIScreen.mainScreen().bounds.size.height == 667)
+        return (SettingsApp.IS_IPHONE && UIScreen.mainScreen().bounds.size.height == 667)
     }
     
     class var IS_IPHONE6PLUS : Bool {
-        return (UIScreen.mainScreen().bounds.size.height == 736)
+        return (SettingsApp.IS_IPHONE && UIScreen.mainScreen().bounds.size.height == 736)
     }
     
     class var appDomain : String {
@@ -55,8 +55,6 @@ class SettingsApp {
         }
     }
     
-    
-    
     class var VC: [String:Any] {
         get { return instacesVC }
         set { instacesVC = newValue }
@@ -64,68 +62,19 @@ class SettingsApp {
     
     class var CNF: [String:AnyObject] {
         get {
-            //println("CNF get")
-        
             if let oldValue = NSUserDefaults.standardUserDefaults().objectForKey("configItems") as? [String:AnyObject] {
                 configItems = oldValue
             }
-        
             //for (itemName,itemValue) in configItems {
                 //println("config: \(itemName)  value: \(itemValue)")
             //}
-        
             return configItems
         }
         set {
-            //println("CNF set")
-            
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "configItems")
             NSUserDefaults.standardUserDefaults().synchronize()
-            
             configItems = newValue
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    class func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
-        
-        if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(advance(cString.startIndex, 1))
-        }
-        
-        if (countElements(cString) != 6) {
-            return UIColor.grayColor()
-        }
-        
-        var rgbValue:UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
-    
-    
     
 }

@@ -16,7 +16,7 @@
 		<key>image</key>
 		<string>flower-yellow</string>
 		<key>active</key>
-		<true/>
+		<false/>
 	</dict>
 	<dict>
 		<key>title</key>

@@ -20,7 +20,7 @@ class SettingsSegue: UIStoryboardSegue {
             //dst.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         //}
         
-        src.presentViewController(dst, animated: hasLaunchedSettings, completion: nil)        
+        src.presentViewController(dst, animated: hasLaunchedSettings, completion: nil)
         
     }
     

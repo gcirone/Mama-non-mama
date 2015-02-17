@@ -7,22 +7,47 @@
 //
 
 import UIKit
+import StoreKit
 
-class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
+class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+    
+    @IBOutlet weak var flowerScrollCenterY: NSLayoutConstraint!
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoBottomSpace: NSLayoutConstraint!
     
     @IBOutlet weak var bg: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var closeSettings: UIButton!
+    @IBOutlet weak var removeBannerBtn: UIButton!
     
+    var flowersProduct: SKProduct!
     var flowers: NSMutableArray?
     var currentIndex = 0
+    
+    deinit {
+        //println("SettingsFlowerVC.deinit")
+        SKPaymentQueue.defaultQueue().removeTransactionObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        //println("SettingsFlowerVC.viewDidDisappear")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //println("SettingsFlowerVC")
+        
+        //fix autolayout
+        if SettingsApp.IS_IPHONE4 {
+            flowerScrollCenterY.constant = 5
+            logoHeight.constant = 50
+            logoBottomSpace.constant = -6
+        }
         
         //hide close button
         closeSettings.hidden = !SettingsApp.hasLaunchedSettings
@@ -33,20 +58,24 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
         
         //change color for btn
         let color: String! = SettingsApp.CNF["\(sex)-color"] as? String
-        nextBtn.setTitleColor(SettingsApp.hexStringToUIColor(color), forState: .Normal)
+        nextBtn.setTitleColor(Utility.hexStringToUIColor(color), forState: .Normal)
         
         //manage flower list
         let path: String! = NSBundle.mainBundle().pathForResource("flowers-\(sex)", ofType: "plist")
         flowers = NSMutableArray(contentsOfFile: path)
-        flowersPayed()
         flowersLoad()
         //flowers.writeToFile(path: String, atomically: true)
+        
+        //init flower payment
+        initFlowerPayment()
         
         //refill settings value
         refillSettings()
         
+        //register to banner purchase event
+        registerToEvents()
         
-    }    
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -58,11 +87,15 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
         setContentScrollSize()
     }
     
-    
-    
-    
-    @IBAction func deleteBanner(sender: UIButton) {
-        println("SettingsFlowerVC.deleteBanner")
+    func registerToEvents() {
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "removeBannerBtn:", name: "bannerPurchased", object: nil)
+        removeBannerBtn(nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "purchaseAdRemovalError:", name: "bannerPurchasedFailed", object: nil)
+
     }
     
     func refillSettings() {
@@ -98,31 +131,59 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
         
         
     }
+
     
+    // MARK: - Banner
+    
+    func removeBannerBtn(notification:NSNotification?) {
+        //println("removeBannerBtn")
+        
+        //remove banner buttom
+        if let status = SettingsApp.CNF["ads-payment"] as? String {
+            if status == "purchased" {
+                removeBannerBtn.hidden = true
+                removeBannerBtn.userInteractionEnabled = false
+            }
+        }
+        
+    }
+    
+    @IBAction func deleteBanner(sender: UIButton) {
+        //println("SettingsFlowerVC.deleteBanner")
+        //ContainerVC.sharedInstance.removeAdBannerFromSetting()
+        NSNotificationCenter.defaultCenter().postNotificationName("removeBannerFromSetting", object:self)
+    }
+    
+    func purchaseAdRemovalError(notification:NSNotification) {
+        //println("purchaseAdRemovalError flowers")
+        let title = "Ad Remove"
+        let message = "Banner payment failed!!! Please try later."
+        Utility.alert(title:title, message:message, view:self)
+    }
     
     
     
     // MARK: - Flowers Manager
     
-    func buyFlowers () {
-        //println("buy flowers")
-        
-    }
-    
-    func flowersPayed () {
+    func flowersPayed() {
         //println("active flowers payed")
         
-        /*
         let numFlower = flowers!.count
         for i in 0..<numFlower {
-        let selectImage: UIImageView! = scrollView.viewWithTag(200+i) as? UIImageView
-        selectImage.alpha = 0
+            let flower: NSMutableDictionary! = flowers!.objectAtIndex(i) as? NSMutableDictionary
+            flower.setObject(true, forKey:"active")
+            flowers?.replaceObjectAtIndex(i, withObject: flower)
+            
+            let selectImage: UIImageView! = scrollView.viewWithTag(200+i) as? UIImageView
+            selectImage.image = UIImage(named: "check-dot")
+            if i != currentIndex {
+                selectImage.alpha = 0
+            }
         }
-        */
         
     }
     
-    func flowersLoad () {
+    func flowersLoad() {
         
         let numFlower = flowers!.count
         let scrollWidth = scrollView.frame.size.width;
@@ -151,7 +212,7 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
             selectImage.tag = 200+i
             scrollView.addSubview(selectImage)
             
-            let btnHide = UIButton(frame: CGRectMake(offsetX+80, 52, 160, 140))
+            let btnHide = UIButton(frame: CGRectMake(offsetX+48, 8, 227, 227))
             btnHide.tag = i
             btnHide.backgroundColor = UIColor.clearColor()
             btnHide.addTarget(self, action: Selector("flowerSelect:"), forControlEvents: .TouchUpInside)
@@ -202,13 +263,13 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
             
             let selectImage: UIImageView! = scrollView.viewWithTag(200+sender.tag) as? UIImageView
             //selectImage.alpha = 1
-            UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseOut, animations: {
+            UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
                 selectImage.alpha = 1
             }, completion: nil)
             
             currentIndex = sender.tag
             
-        } else if active == false {
+        } else if active == false && sender.frame.size != CGSizeZero {
             buyFlowers()
         }
         
@@ -227,6 +288,10 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
             frame.origin.y = 0;
             pageControl.currentPage = currentPage;
             scrollView.scrollRectToVisible(frame, animated: true)
+            //fake tap on flower
+            let tmpBtn = UIButton()
+            tmpBtn.tag = currentPage
+            flowerSelect(tmpBtn)
         }
     }
     
@@ -235,29 +300,135 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
         frame.origin.x = frame.size.width * CGFloat(sender.currentPage)
         frame.origin.y = 0;
         scrollView.scrollRectToVisible(frame, animated: true)
+        //fake tap on flower
+        let tmpBtn = UIButton()
+        tmpBtn.tag = sender.currentPage
+        flowerSelect(tmpBtn)
     }
     
     func scrollViewDidEndDecelerating(sender: UIScrollView) {
         let currentPage = Int(sender.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = currentPage;
+        //fake tap on flower
+        let tmpBtn = UIButton()
+        tmpBtn.tag = currentPage
+        flowerSelect(tmpBtn)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
+        //println("scrollViewDidScroll \(pageControl.currentPage)")
     }
     
     
     
+    // MARK: - Flowers Payment
+    
+    func initFlowerPayment(){
+        
+        //SettingsApp.CNF["flowers-payment"] = nil
+        SettingsApp.CNF["flowers-payment"] = "purchased"
+        //println(SettingsApp.CNF["flowers-payment"])
+        
+        if SettingsApp.CNF["flowers-payment"] == nil {
+            SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+            getFlowersPaymentInfo()
+        } else if let status = SettingsApp.CNF["flowers-payment"] as? String {
+            if status == "purchased" {
+                flowersPayed()
+            } else {
+                SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+                getFlowersPaymentInfo()
+            }
+        }
+        
+    }
+    
+    func buyFlowers () {
+        //println("buy flowers")
+        if flowersProduct != nil && SKPaymentQueue.canMakePayments() {
+            let payment: SKPayment = SKPayment(product: flowersProduct)
+            SKPaymentQueue.defaultQueue().addPayment(payment)
+        }
+    }
+    
+    func getFlowersPaymentInfo() {
+        if SKPaymentQueue.canMakePayments() {
+            let productID:NSSet = NSSet(object: "com.flashdevit.flowers")
+            let request:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
+            request.delegate = self
+            request.start()
+        }
+    }
+    
+    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
+        let products = response.products
+        if products.count != 0 {
+            flowersProduct = products[0] as SKProduct
+            //println("flowers product title:\(flowersProduct.localizedTitle) dsc:\(flowersProduct.localizedDescription)")
+        }
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
+                //println("flower transactionIdentifier \(trans.payment.productIdentifier)")
+                if trans.payment.productIdentifier == "com.flashdevit.flowers" {
+                    
+                    switch trans.transactionState {
+                    case .Purchased:
+                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
+                        //println("flowers paymentQueue .Purchased")
+                        purchaseFlowers()
+                        break
+                    case .Failed:
+                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
+                        //println("flowers paymentQueue .Failed")
+                        purchaseFlowersError()
+                        break
+                    case .Restored:
+                        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                        //println("flowers paymentQueue .Restored")
+                        break
+                    default:
+                        break
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+
+    func purchaseFlowers(){
+        //println("purchaseFlowers")
+        SettingsApp.CNF["flowers-payment"] = "purchased"
+        NSNotificationCenter.defaultCenter().postNotificationName("flowersPurchased", object:self)
+        flowersPayed()
+    }
+    
+    func purchaseFlowersError(){
+        //println("purchaseFlowersError")
+        let title = "Flowers"
+        let message = "Flowers payment failed!!! Please try later."
+        Utility.alert(title:title, message:message, view:self)
+    }
+
     
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    @IBAction func playGame(sender: UIButton) {
         
         //println("prepareForSegue flowerSelect index: \(currentIndex)")
         let flower: NSDictionary! = flowers!.objectAtIndex(currentIndex) as? NSDictionary
         SettingsApp.CNF["flower-select"] = flower
         SettingsApp.CNF["flower-index"] = currentIndex
+        SettingsApp.hasLaunchedSettings = true
+        closeSettings.sendActionsForControlEvents(.TouchUpInside)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
     

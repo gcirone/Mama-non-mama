@@ -8,7 +8,15 @@
 
 import UIKit
 
-class SettingsUserVC: UIViewController, UITextFieldDelegate {
+class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate, FBFriendPickerDelegate {
+    
+    @IBOutlet weak var fbLoginView: FBLoginView!
+    //var friendPickerController: FBTaggableFriendPickerViewController!
+    var friendPickerController: FBFriendPickerViewController!
+    
+    @IBOutlet weak var lineArtisticCenterY: NSLayoutConstraint!
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoBottomSpace: NSLayoutConstraint!
     
     @IBOutlet weak var bg: UIImageView!
     @IBOutlet weak var name: UITextField!
@@ -19,11 +27,20 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var closeSettings: UIButton!
     
+    @IBOutlet weak var friendsBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //println("SettingsUserVC")
+        
+        //fix autolayout
+        if SettingsApp.IS_IPHONE4 {
+            lineArtisticCenterY.constant = 110
+            logoHeight.constant = 50
+            logoBottomSpace.constant = -4
+        }
         
         //hide close button
         closeSettings.hidden = !SettingsApp.hasLaunchedSettings
@@ -34,7 +51,7 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate {
         
         //change color for btn
         let color: String! = SettingsApp.CNF["\(sex)-color"] as? String
-        playBtn.setTitleColor(SettingsApp.hexStringToUIColor(color), forState: .Normal)
+        playBtn.setTitleColor(Utility.hexStringToUIColor(color), forState: .Normal)
         
         //personalize slider
         var sliderPin = UIImage(named: "slider-pin-\(sex)")
@@ -45,6 +62,9 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate {
         
         //refill settings value
         refillSettings()
+        
+        //facebook init
+        initFacebook()
         
     }
     
@@ -106,15 +126,112 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate {
         hearthImage.image = UIImage(named: imageNamed)
     }
     
+    
+    
+    // MARK: - Facebook
+    
+    func initFacebook() {
+        fbLoginView.delegate = self
+        fbLoginView.readPermissions = ["public_profile", "user_friends", "user_relationships", "user_relationship_details"]
+    }
+    
+    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
+        //println("User logged in")
+        loginBtn.setTitle("Logout", forState: .Normal)
+        friendsBtn.enabled = true
+    }
+    
+    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
+        //println("User name: \(user)")
+        
+        if SettingsApp.CNF["fbid"] == nil {
+            let userFbId: String! = user.objectForKey("id") as? String
+            SettingsApp.CNF["fbid"] = userFbId
+            let userName: String! = user.first_name
+            if SettingsApp.CNF["name"] == nil || name.text != userName {
+                name.text = userName
+            }
+            if user.objectForKey("significant_other") != nil {
+                let partnerFbId: String! = user.objectForKey("significant_other").objectForKey("id") as? String
+                SettingsApp.CNF["fbid-partner"] = partnerFbId
+                var partnerName: String! = user.objectForKey("significant_other").objectForKey("name") as? String
+                partnerName = partnerName.componentsSeparatedByString(" ")[0]
+                if SettingsApp.CNF["surname"] == nil || surname.text != partnerName {
+                    surname.text = partnerName
+                }
+            }
+        }
+        
+        //FBRequest.requestForMe().startWithCompletionHandler(fbRequestCompletionHandler)
+        //FBRequest.requestForMyFriends().startWithCompletionHandler(fbRequestCompletionHandler);
+        //FBRequest.requestForGraphPath("/me/friends").startWithCompletionHandler(fbRequestCompletionHandler)
+        
+    }
+    
+    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
+        //println("User logged out")
+        loginBtn.setTitle("Login", forState: .Normal)
+        friendsBtn.enabled = false
+        SettingsApp.CNF["fbid"] = nil
+    }
+    
+    func loginView(loginView: FBLoginView!, handleError: NSError!) {
+        println("Error \(handleError.localizedDescription)")
+    }
+    
+    func fbRequestCompletionHandler(connection:FBRequestConnection!, result:AnyObject!, error:NSError!){
+        if let gotError = error {
+            println("Error request: \(error.localizedDescription)")
+        }else{
+            //println(result)
+        }
+    }
+    
+    @IBAction func pickerFriends(sender: UIButton) {
+        
+        if friendPickerController == nil {
+            friendPickerController = FBFriendPickerViewController()
+            //friendPickerController = FBTaggableFriendPickerViewController()
+            friendPickerController.title = "Select Friend"
+            friendPickerController.delegate = self
+        }
+        
+        friendPickerController.loadData()
+        friendPickerController.clearSelection()
+        
+        presentViewController(friendPickerController, animated: true, completion: nil)
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None)
+        
+    }
+    
+    func facebookViewControllerDoneWasPressed(sender: AnyObject!) {
+        //println("facebookViewControllerDoneWasPressed")
+        let friends = friendPickerController.selection as NSArray
+        if friends.count > 0 {
+            var partnerName: String! = friends[0].objectForKey("first_name") as? String
+            if SettingsApp.CNF["surname"] == nil || surname.text != partnerName {
+                surname.text = partnerName
+            }
+        }
+        checkPlayBtnEnabled()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func facebookViewControllerCancelWasPressed(sender: AnyObject!) {
+        //println("facebookViewControllerCancelWasPressed")
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
+    
+    // MARK: - Navigation
+    
     @IBAction func playGame(sender: UIButton) {
         SettingsApp.CNF["name"] = name.text
         SettingsApp.CNF["surname"] = surname.text
         SettingsApp.CNF["love-level"] = slider.value
-        SettingsApp.hasLaunchedSettings = true
-        closeSettings.sendActionsForControlEvents(.TouchUpInside)
+        self.performSegueWithIdentifier("SettingsFlower", sender: self)
     }
-    
-    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

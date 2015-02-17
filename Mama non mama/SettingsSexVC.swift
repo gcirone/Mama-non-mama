@@ -10,16 +10,21 @@ import UIKit
 
 class SettingsSexVC: UIViewController {
     
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var closeSettings: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //SettingsApp.VC["SettingsSexVC"] = self
         //println("SettingsSexVC")
         
+        //fix autolayout
+        if SettingsApp.IS_IPHONE4 {
+            logoHeight.constant = 140
+        }
+        
         //hide close button
-        closeSettings.hidden = !SettingsApp.hasLaunchedSettings        
+        closeSettings.hidden = !SettingsApp.hasLaunchedSettings
 
     }
     
@@ -29,9 +34,10 @@ class SettingsSexVC: UIViewController {
         } else if button.tag == 2 {
             SettingsApp.CNF["sex"] = "man"
         }
-        self.performSegueWithIdentifier("SettingsFlower", sender: self)
+        self.performSegueWithIdentifier("SettingsUser", sender: self)
     }
 
+    
     
     // MARK: - Navigation
     
@@ -42,6 +48,7 @@ class SettingsSexVC: UIViewController {
     @IBAction func unwindToSettingsSexVC(sender: UIStoryboardSegue) {
         //println("unwindToSettingsSexVC")
     }
+    
     
     
     // MARK: - Config

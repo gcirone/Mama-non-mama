@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Mama non mama
+
+  Created by Gianluca, Cirone on 15/02/15.
+  Copyright (c) 2014 Gianluca Cirone. All rights reserved.
+ 
+  NSLocalizedString("KEY", nil)
+  ${PRODUCT_NAME}
+ 
+*/
+
+"Loves me, loves me not" = "Loves me, loves me not";
