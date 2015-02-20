@@ -3,82 +3,82 @@
 "0cD-wi-1Gc.title" = "ContainerVC";
 
 /* Class = "IBUIButton"; normalTitle = "UOMO"; ObjectID = "1Bn-Dx-cwm"; */
-"1Bn-Dx-cwm.normalTitle" = "UOMO";
+"1Bn-Dx-cwm.normalTitle" = "HOMME";
 
 /* Class = "IBUITextField"; placeholder = "scrivi il nome del tuo partner"; ObjectID = "40F-HN-IDW"; */
-"40F-HN-IDW.placeholder" = "scrivi il nome del tuo partner";
+"40F-HN-IDW.placeholder" = "écris le nom de ton amour";
 
 /* Class = "IBUILabel"; text = "Quanto ami il tuo partner?"; ObjectID = "464-jN-C4K"; */
-"464-jN-C4K.text" = "Quanto ami il tuo partner?";
+"464-jN-C4K.text" = "Combien tu aimes ton partenaire?";
 
 /* Class = "IBUIButton"; normalTitle = "Amici"; ObjectID = "4Jy-2i-YJB"; */
-"4Jy-2i-YJB.normalTitle" = "Amici";
+"4Jy-2i-YJB.normalTitle" = "Amis";
 
 /* Class = "IBUILabel"; text = "SCOPRI SUBITO SE È SBOCCIATO L'AMORE"; ObjectID = "4OG-qP-DZh"; */
-"4OG-qP-DZh.text" = "SCOPRI SUBITO SE È SBOCCIATO L'AMORE";
+"4OG-qP-DZh.text" = "DECOUVREZ MAINTENANT SI L'AMOUR EST ÉPANOUIE";
 
 /* Class = "IBUIButton"; normalTitle = "chiudi"; ObjectID = "89P-rv-G7V"; */
-"89P-rv-G7V.normalTitle" = "chiudi";
+"89P-rv-G7V.normalTitle" = "fermez";
 
 /* Class = "IBUILabel"; text = "Scrivi il nome del tuo partner"; ObjectID = "8Rd-ml-eWO"; */
-"8Rd-ml-eWO.text" = "Scrivi il nome del tuo partner";
+"8Rd-ml-eWO.text" = "Écris le nom de ton amour";
 
 /* Class = "IBUILabel"; text = "Completa"; ObjectID = "8bF-Zq-UVt"; */
-"8bF-Zq-UVt.text" = "Completa";
+"8bF-Zq-UVt.text" = "Finir";
 
 /* Class = "IBUIViewController"; title = "SettingsFlowerVC"; ObjectID = "9Zp-ES-HxJ"; */
 "9Zp-ES-HxJ.title" = "SettingsFlowerVC";
 
 /* Class = "IBUIButton"; normalTitle = "Avanti"; ObjectID = "AVZ-Sq-Bkl"; */
-"AVZ-Sq-Bkl.normalTitle" = "Avanti";
+"AVZ-Sq-Bkl.normalTitle" = "Passez";
 
 /* Class = "IBUIViewController"; title = "SettingsSexVC"; ObjectID = "Dka-Nx-9yF"; */
 "Dka-Nx-9yF.title" = "SettingsSexVC";
 
 /* Class = "IBUILabel"; text = "SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA"; ObjectID = "Prx-30-wSl"; */
-"Prx-30-wSl.text" = "SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA";
+"Prx-30-wSl.text" = "PARCOURIR LES PÉTALES ET DÉCOUVRIR SI TON AMOUR T'AIME";
 
 /* Class = "IBUIButton"; normalTitle = "sesso"; ObjectID = "QvF-w2-zit"; */
-"QvF-w2-zit.normalTitle" = "sesso";
+"QvF-w2-zit.normalTitle" = "sexe";
 
 /* Class = "IBUIButton"; normalTitle = "chiudi"; ObjectID = "UP9-Sb-aHj"; */
-"UP9-Sb-aHj.normalTitle" = "chiudi";
+"UP9-Sb-aHj.normalTitle" = "fermer";
 
 /* Class = "IBUILabel"; text = "Scrivi il tuo nome"; ObjectID = "URB-AI-UYW"; */
-"URB-AI-UYW.text" = "Scrivi il tuo nome";
+"URB-AI-UYW.text" = "Écris ton nom";
 
 /* Class = "IBUIButton"; normalTitle = "Gioca"; ObjectID = "VUp-d8-Lr2"; */
-"VUp-d8-Lr2.normalTitle" = "Gioca";
+"VUp-d8-Lr2.normalTitle" = "Jouer";
 
 /* Class = "IBUITextField"; placeholder = "scrivi il tuo nome"; ObjectID = "W5D-05-sd7"; */
-"W5D-05-sd7.placeholder" = "scrivi il tuo nome";
+"W5D-05-sd7.placeholder" = "écris ton nom";
 
 /* Class = "IBUIButton"; normalTitle = "Rimuovi banner pubblicitario"; ObjectID = "c12-Cs-NoO"; */
-"c12-Cs-NoO.normalTitle" = "Rimuovi banner pubblicitario";
+"c12-Cs-NoO.normalTitle" = "Retirer la bannière";
 
 /* Class = "IBUILabel"; text = "Sei una / un"; ObjectID = "ceH-qE-Brq"; */
-"ceH-qE-Brq.text" = "Sei una / un";
+"ceH-qE-Brq.text" = "Tu es un / une";
 
 /* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "jf2-Oy-zdZ"; */
 "jf2-Oy-zdZ.normalTitle" = "Login";
 
 /* Class = "IBUILabel"; text = "Oppure selezionalo da Facebook"; ObjectID = "kbh-fE-nh1"; */
-"kbh-fE-nh1.text" = "Oppure selezionalo da Facebook";
+"kbh-fE-nh1.text" = "Ou choisi de Facebook";
 
 /* Class = "IBUIButton"; normalTitle = "chiudi"; ObjectID = "l9a-lu-Ggv"; */
-"l9a-lu-Ggv.normalTitle" = "chiudi";
+"l9a-lu-Ggv.normalTitle" = "fermer";
 
 /* Class = "IBUIButton"; normalTitle = "partner"; ObjectID = "set-8B-qnc"; */
-"set-8B-qnc.normalTitle" = "partner";
+"set-8B-qnc.normalTitle" = "partenaire";
 
 /* Class = "IBUIButton"; normalTitle = "DONNA"; ObjectID = "vP3-aD-jgF"; */
-"vP3-aD-jgF.normalTitle" = "DONNA";
+"vP3-aD-jgF.normalTitle" = "FEMME";
 
 /* Class = "IBUILabel"; text = "L’AMORE INIZIA PER GIOCO"; ObjectID = "xMn-b6-nxZ"; */
-"xMn-b6-nxZ.text" = "L’AMORE INIZIA PER GIOCO";
+"xMn-b6-nxZ.text" = "L’AMOUR COMMENCE POUR LE JEU";
 
 /* Class = "IBUIViewController"; title = "SettingsUserVC"; ObjectID = "yP5-8Y-kFk"; */
 "yP5-8Y-kFk.title" = "SettingsUserVC";
 
 /* Class = "IBUILabel"; text = "SCEGLI IL FIORE CHE PIÙ ASSOMIGLIA AL TUO AMORE"; ObjectID = "zCF-Ie-SvN"; */
-"zCF-Ie-SvN.text" = "SCEGLI IL FIORE CHE PIÙ ASSOMIGLIA AL TUO AMORE";
+"zCF-Ie-SvN.text" = "CHOISIR LA FLEUR QUI CONVIENT À VOTRE AMOUR LE PLUS";

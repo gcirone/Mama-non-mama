@@ -137,7 +137,7 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate
     
     func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
         //println("User logged in")
-        loginBtn.setTitle("Logout", forState: .Normal)
+        loginBtn.setTitle(NSLocalizedString("Logout", comment:""), forState: .Normal)
         friendsBtn.enabled = true
     }
     
@@ -170,7 +170,7 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         //println("User logged out")
-        loginBtn.setTitle("Login", forState: .Normal)
+        loginBtn.setTitle(NSLocalizedString("Login", comment:""), forState: .Normal)
         friendsBtn.enabled = false
         SettingsApp.CNF["fbid"] = nil
     }
@@ -192,7 +192,7 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate
         if friendPickerController == nil {
             friendPickerController = FBFriendPickerViewController()
             //friendPickerController = FBTaggableFriendPickerViewController()
-            friendPickerController.title = "Select Friend"
+            friendPickerController.title = NSLocalizedString("Friends", comment:"")
             friendPickerController.delegate = self
         }
         
@@ -227,14 +227,15 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate
     // MARK: - Navigation
     
     @IBAction func playGame(sender: UIButton) {
-        SettingsApp.CNF["name"] = name.text
-        SettingsApp.CNF["surname"] = surname.text
-        SettingsApp.CNF["love-level"] = slider.value
         self.performSegueWithIdentifier("SettingsFlower", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if(!name.text.isEmpty && !surname.text.isEmpty) {
+            SettingsApp.CNF["name"] = name.text
+            SettingsApp.CNF["surname"] = surname.text
+            SettingsApp.CNF["love-level"] = slider.value
+        }
     }
     
     @IBAction func unwindToSettingsUserVC(sender: UIStoryboardSegue) {

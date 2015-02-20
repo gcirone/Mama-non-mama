@@ -195,7 +195,7 @@ class FlowerGame: SKScene {
                 let y = CGFloat(arc4random_uniform(41)) - 20.0
                 let myVector = CGVectorMake(x, y)
                 node.physicsBody?.applyImpulse(myVector)
-                node.physicsBody?.applyAngularImpulse(-x/100)
+                node.physicsBody?.applyAngularImpulse(-x/200)
                 
             }
         

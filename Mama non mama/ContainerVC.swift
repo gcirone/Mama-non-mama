@@ -37,7 +37,9 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     @IBOutlet var flowerGameView: SKView!
     var flowerSelect: SKNode?
     
+    @IBOutlet weak var logoSmall: UIImageView!
     @IBOutlet weak var logoSmallHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoSmallWidth: NSLayoutConstraint!
     @IBOutlet weak var infoLabelCenterY: NSLayoutConstraint!    
     @IBOutlet weak var bannerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var adBanner: ADBannerView!
@@ -71,12 +73,22 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         //println("ContainerVC")
         
         //fix autolayout
-        if SettingsApp.IS_IPHONE6 || SettingsApp.IS_IPHONE6PLUS {
-            infoLabelCenterY.constant = -155
-        } else if SettingsApp.IS_IPHONE4 {
+        if SettingsApp.IS_IPHONE4 {
             logoSmallHeight.constant = 70
+        } else if SettingsApp.IS_IPHONE6 {
+            infoLabelCenterY.constant = -155
+            logoSmallWidth.constant = 208
+            logoSmallHeight.constant = 118
+        } else if SettingsApp.IS_IPHONE6PLUS {
+            infoLabelCenterY.constant = -155
+            logoSmallWidth.constant = 265
+            logoSmallHeight.constant = 150
+            logoSmall.image = UIImage(named:"logo-big.png")
         } else if SettingsApp.IS_IPAD {
             infoLabelCenterY.constant = -185
+            logoSmallWidth.constant = 300
+            logoSmallHeight.constant = 170
+            logoSmall.image = UIImage(named:"logo-big.png")
         }
         
         //init ios ad banner
@@ -153,7 +165,7 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         
         infoFlower.font.fontWithSize(30);
         
-        let loveReseult: String = (love == true) ? "MI AMA!" : "NON MI AMA!"
+        let loveReseult: String = (love == true) ? NSLocalizedString("LOVES ME!", comment:"") : NSLocalizedString("LOVES ME NOT!", comment:"")
         if let surnameValue  = SettingsApp.CNF["surname"] as? String {
             infoFlower.text = "\(surnameValue.uppercaseString)\n\(loveReseult)"
         }
@@ -173,9 +185,9 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         
         infoFlower.alpha = 0
         infoFlower.font.fontWithSize(23);
-        infoFlower.text = "SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA"
+        infoFlower.text = NSLocalizedString("BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU", comment:"")
         
-        let loveReseult: String = (love == true) ? "AMA" : "NON AMA"
+        let loveReseult: String = (love == true) ? NSLocalizedString("LOVES", comment:"") : NSLocalizedString("LOVES NOT", comment:"")
         resultLoveFlower.text = loveReseult
         
         if let nameValue  = SettingsApp.CNF["name"] as? String {
@@ -227,7 +239,7 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         })
         
         resultHearthFlower.transform = CGAffineTransformMakeScale(0, 0)
-        UIView.animateWithDuration(2.6, delay: 1.2, usingSpringWithDamping:0.4, initialSpringVelocity:0,
+        UIView.animateWithDuration(2.2, delay: 1.2, usingSpringWithDamping:0.4, initialSpringVelocity:0,
             options: .CurveEaseInOut, animations: {
             self.resultHearthFlower.transform = CGAffineTransformMakeScale(1, 1)
         }, completion: { finished in
@@ -351,7 +363,7 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         //println("ContainerVC.removeScene")
         
         infoFlower.hidden = true
-        infoFlower.text = "SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA"
+        infoFlower.text = NSLocalizedString("BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU", comment:"")
         flowerGameView.hidden = true
         
         //discard old scene
@@ -429,7 +441,7 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         bannerBottomConstraint.constant = -50
         
         //SettingsApp.CNF["ads-payment"] = nil
-        SettingsApp.CNF["ads-payment"] = "purchased"
+        //SettingsApp.CNF["ads-payment"] = "purchased"
         //println(SettingsApp.CNF["ads-payment"])
         
         if SettingsApp.CNF["ads-payment"] == nil {
@@ -537,8 +549,8 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     func purchaseAdRemovalError(notification:NSNotification) {
         //println("purchaseAdRemovalError container")
         if self.view.superview != nil {
-            let title = "Ad Remove"
-            let message = "Banner payment failed!!! Please try later."
+            let title = NSLocalizedString("Remove Banner", comment:"")
+            let message = NSLocalizedString("The banner payment failed!!! Please try later.", comment:"")
             Utility.alert(title:title, message:message, view:self)
         }
     }

@@ -6,8 +6,31 @@
   Copyright (c) 2014 Gianluca Cirone. All rights reserved.
  
   NSLocalizedString("KEY", nil)
-  ${PRODUCT_NAME}
  
 */
 
 "Loves me, loves me not" = "Loves me, loves me not";
+
+"LOVES ME!" = "LOVES ME!";
+
+"LOVES ME NOT!" = "LOVES ME NOT!";
+
+"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU";
+
+"LOVES" = "LOVES";
+
+"LOVES NOT" = "LOVES NOT";
+
+"Remove Banner" = "Remove Banner";
+
+"The banner payment failed!!! Please try later." = "The banner payment failed!!! Please try later.";
+
+"Add Flowers" = "Add Flowers";
+
+"The flower payment failed!!! Please try later." = "The flower payment failed!!! Please try later.";
+
+"Login" = "Login";
+
+"Logout" = "Logout";
+
+"Friends" = "Friends";

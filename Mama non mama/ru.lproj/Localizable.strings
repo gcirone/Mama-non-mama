@@ -6,8 +6,31 @@
   Copyright (c) 2014 Gianluca Cirone. All rights reserved.
  
   NSLocalizedString("KEY", nil)
-  ${PRODUCT_NAME}
  
 */
 
-"Loves me, loves me not" = "Loves me, loves me not";
+"Loves me, loves me not" = "Любит, не любит";
+
+"LOVES ME!" = "ЛЮБИТ МЕНЯ!";
+
+"LOVES ME NOT!" = "НЕ ЛЮБИТ МЕНЯ!";
+
+"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "ОТОРВИ ЛЕПЕСТКИ И УЗНАЙ ЛЮБИТ ЛИ ТЕБЯ ТВОЙ ВОЗЛЮБЛЕННЫЙ";
+
+"LOVES" = "ЛЮБИТ";
+
+"LOVES NOT" = "НЕ ЛЮБИТ";
+
+"Remove Banner" = "Скрыть Баннер";
+
+"The banner payment failed!!! Please try later." = "Оплата баннера не удалась! Пожалуйста, попробуйте позже.";
+
+"Add Flowers" = "Добавить цветок";
+
+"The flower payment failed!!! Please try later." = "Оплата цветка не удалась! Пожалуйста, попробуйте позже";
+
+"Login" = "Логин";
+
+"Logout" = "Выход";
+
+"Friends" = "Друзья";

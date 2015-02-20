@@ -6,26 +6,31 @@
   Copyright (c) 2014 Gianluca Cirone. All rights reserved.
  
   NSLocalizedString("KEY", nil)
-  ${PRODUCT_NAME}
  
 */
 
-"M'ama, non m'ama" = "Loves me, loves me not";
+"Loves me, loves me not" = "Loves me, loves me not";
 
-"MI AMA!" = "";
+"LOVES ME!" = "LOVES ME!";
 
-"NON MI AMA!" = "";
+"LOVES ME NOT!" = "LOVES ME NOT!";
 
-"SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA" = "";
+"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU";
 
-"AMA" = "";
+"LOVES" = "LOVES";
 
-"NON AMA" = "";
+"LOVES NOT" = "LOVES NOT";
 
-"Rimuovi Banner" = "";
+"Remove Banner" = "Remove Banner";
 
-"Pagamento banner fallito!!! Per favore riprova più tardi." = "";
+"The banner payment failed!!! Please try later." = "The banner payment failed!!! Please try later.";
 
-"Aggiungi Fiori" = "";
+"Add Flowers" = "Add Flowers";
 
-"Pagamento fiori fallito!!! Per favore riprova più tardi." = "";
+"The flower payment failed!!! Please try later." = "The flower payment failed!!! Please try later.";
+
+"Login" = "Login";
+
+"Logout" = "Logout";
+
+"Friends" = "Friends";

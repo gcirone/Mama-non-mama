@@ -156,8 +156,8 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     
     func purchaseAdRemovalError(notification:NSNotification) {
         //println("purchaseAdRemovalError flowers")
-        let title = "Ad Remove"
-        let message = "Banner payment failed!!! Please try later."
+        let title = NSLocalizedString("Remove Banner", comment:"")
+        let message = NSLocalizedString("The banner payment failed!!! Please try later.", comment:"")
         Utility.alert(title:title, message:message, view:self)
     }
     
@@ -326,7 +326,7 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     func initFlowerPayment(){
         
         //SettingsApp.CNF["flowers-payment"] = nil
-        SettingsApp.CNF["flowers-payment"] = "purchased"
+        //SettingsApp.CNF["flowers-payment"] = "purchased"
         //println(SettingsApp.CNF["flowers-payment"])
         
         if SettingsApp.CNF["flowers-payment"] == nil {
@@ -408,8 +408,8 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     
     func purchaseFlowersError(){
         //println("purchaseFlowersError")
-        let title = "Flowers"
-        let message = "Flowers payment failed!!! Please try later."
+        let title = NSLocalizedString("Add Flowers", comment:"")
+        let message = NSLocalizedString("The flower payment failed!!! Please try later.", comment:"")
         Utility.alert(title:title, message:message, view:self)
     }
 
@@ -418,17 +418,16 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     // MARK: - Navigation
     
     @IBAction func playGame(sender: UIButton) {
+        closeSettings.sendActionsForControlEvents(.TouchUpInside)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         //println("prepareForSegue flowerSelect index: \(currentIndex)")
         let flower: NSDictionary! = flowers!.objectAtIndex(currentIndex) as? NSDictionary
         SettingsApp.CNF["flower-select"] = flower
         SettingsApp.CNF["flower-index"] = currentIndex
         SettingsApp.hasLaunchedSettings = true
-        closeSettings.sendActionsForControlEvents(.TouchUpInside)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
     
