@@ -162,6 +162,7 @@ class SettingsUserVC: UIViewController, UITextFieldDelegate, FBLoginViewDelegate
             }
         }
         
+        checkPlayBtnEnabled()        
         //FBRequest.requestForMe().startWithCompletionHandler(fbRequestCompletionHandler)
         //FBRequest.requestForMyFriends().startWithCompletionHandler(fbRequestCompletionHandler);
         //FBRequest.requestForGraphPath("/me/friends").startWithCompletionHandler(fbRequestCompletionHandler)

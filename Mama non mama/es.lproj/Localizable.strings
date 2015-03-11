@@ -10,4 +10,32 @@
  
 */
 
-"Loves me, loves me not" = "Loves me, loves me not";
+"Loves me, loves me not" = "Me quiere, no me quiere";
+
+"LOVES ME!" = "ME QUIERE!";
+
+"LOVES ME NOT!" = "NO ME QUIERE!";
+
+"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "DESHOJA LOS PETALOS Y DESCUBRE SI TU AMOR TE AMA";
+
+"LOVES" = "QUIERE";
+
+"LOVES NOT" = "NO QUIERE";
+
+"Remove Banner" = "Eliminar el banner";
+
+"The banner payment failed!!! Please try later." = "Error en el pago del Banner!!! Por favor prueba más tarde.";
+
+"Add Flowers" = "Agrega Flores";
+
+"The flower payment failed!!! Please try later." = "Error en el pago de Flores!!! Por favor prueba más tarde.";
+
+"Login" = "Login";
+
+"Logout" = "Logout";
+
+"Friends" = "Amigos";
+
+"Restore purchases" = "Restaurar compras";
+
+"Restore purchases successful. Thank you." = "Has restaurado tus compras correctamente. Gracias.";

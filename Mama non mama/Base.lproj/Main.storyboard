@@ -14,6 +14,7 @@
             <string>PTSerif-CaptionItalic</string>
             <string>PTSerif-CaptionItalic</string>
             <string>PTSerif-CaptionItalic</string>
+            <string>PTSerif-CaptionItalic</string>
         </mutableArray>
         <mutableArray key="PT_Serif-Web-Italic.ttf">
             <string>PTSerif-Italic</string>
@@ -88,13 +89,13 @@
                                 </connections>
                             </button>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="FtP-cR-l9s" userLabel="banner-view">
-                                <rect key="frame" x="0.0" y="568" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5eM-N8-ujf"/>
                                 </constraints>
                             </adBannerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bF-Zq-UVt" userLabel="completa-label">
-                                <rect key="frame" x="2" y="543" width="76" height="22"/>
+                                <rect key="frame" x="2" y="493" width="76" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="UaA-NO-Ghg"/>
                                     <constraint firstAttribute="width" constant="76" id="gQs-wY-KJl"/>
@@ -106,10 +107,10 @@
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake-ico" translatesAutoresizingMaskIntoConstraints="NO" id="rXX-Pu-XZ0">
-                                <rect key="frame" x="18" y="495" width="44" height="46"/>
+                                <rect key="frame" x="18" y="445" width="44" height="46"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Np-cN-e9p" userLabel="partner-name">
-                                <rect key="frame" x="243" y="543" width="76" height="22"/>
+                                <rect key="frame" x="243" y="493" width="76" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="76" id="Wry-zT-3TU"/>
                                     <constraint firstAttribute="height" constant="22" id="mJF-28-JS1"/>
@@ -121,24 +122,24 @@
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man-sign-small" translatesAutoresizingMaskIntoConstraints="NO" id="NcI-Iy-s77">
-                                <rect key="frame" x="271" y="505" width="32" height="40"/>
+                                <rect key="frame" x="271" y="455" width="32" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="E25-8y-Zqf"/>
                                     <constraint firstAttribute="width" constant="32" id="oSp-96-iNr"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woman-sign-small" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-vs-sDp">
-                                <rect key="frame" x="264" y="505" width="40" height="40"/>
+                                <rect key="frame" x="264" y="455" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9I2-u3-VaO"/>
                                     <constraint firstAttribute="width" constant="40" id="mWd-0u-6q0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-HL-3T6" userLabel="rimuovi-banner">
-                                <rect key="frame" x="295" y="574" width="20" height="20"/>
+                                <rect key="frame" x="294" y="521" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="6to-rm-Den"/>
-                                    <constraint firstAttribute="height" constant="20" id="9wu-5B-NTx"/>
+                                    <constraint firstAttribute="width" constant="25" id="6to-rm-Den"/>
+                                    <constraint firstAttribute="height" constant="25" id="9wu-5B-NTx"/>
                                 </constraints>
                                 <state key="normal" image="close-banner">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,7 +226,7 @@
                             <constraint firstItem="Prx-30-wSl" firstAttribute="centerX" secondItem="5S2-5d-Hfg" secondAttribute="centerX" id="DFf-cu-Qt3"/>
                             <constraint firstAttribute="trailing" secondItem="grc-V8-bxv" secondAttribute="trailing" id="FtS-bY-O18"/>
                             <constraint firstAttribute="trailing" secondItem="FtP-cR-l9s" secondAttribute="trailing" id="IxX-zM-Mjd"/>
-                            <constraint firstItem="jBH-HL-3T6" firstAttribute="leading" secondItem="FtP-cR-l9s" secondAttribute="trailing" constant="-25" id="Q0a-ew-AgV"/>
+                            <constraint firstItem="jBH-HL-3T6" firstAttribute="leading" secondItem="FtP-cR-l9s" secondAttribute="trailing" constant="-26" id="Q0a-ew-AgV"/>
                             <constraint firstItem="rXX-Pu-XZ0" firstAttribute="leading" secondItem="8bF-Zq-UVt" secondAttribute="trailing" constant="-60" id="XCm-0Q-SsM"/>
                             <constraint firstItem="5S2-5d-Hfg" firstAttribute="centerX" secondItem="SIl-CL-SAg" secondAttribute="centerX" id="XpN-Yy-qa3"/>
                             <constraint firstItem="grc-V8-bxv" firstAttribute="leading" secondItem="Iio-lX-pNx" secondAttribute="leading" id="am0-Oh-a3I"/>
@@ -234,7 +235,7 @@
                             <constraint firstItem="hgC-Cu-WgL" firstAttribute="top" secondItem="4rG-qd-Z4t" secondAttribute="bottom" constant="12" id="hZi-AQ-MjP"/>
                             <constraint firstItem="grc-V8-bxv" firstAttribute="top" secondItem="4rG-qd-Z4t" secondAttribute="bottom" id="ip3-9L-CiD"/>
                             <constraint firstItem="FtP-cR-l9s" firstAttribute="top" secondItem="8bF-Zq-UVt" secondAttribute="bottom" constant="3" id="jnU-Nc-hL9"/>
-                            <constraint firstItem="FtP-cR-l9s" firstAttribute="top" secondItem="jBH-HL-3T6" secondAttribute="bottom" constant="-26" id="k3f-ZT-Sda"/>
+                            <constraint firstItem="FtP-cR-l9s" firstAttribute="top" secondItem="jBH-HL-3T6" secondAttribute="bottom" constant="-28" id="k3f-ZT-Sda"/>
                             <constraint firstItem="IVu-VT-zIM" firstAttribute="top" secondItem="grc-V8-bxv" secondAttribute="bottom" id="qyh-Y0-WyW"/>
                             <constraint firstAttribute="trailing" secondItem="5S2-5d-Hfg" secondAttribute="trailing" id="tld-R2-lj4"/>
                             <constraint firstItem="5S2-5d-Hfg" firstAttribute="top" secondItem="4rG-qd-Z4t" secondAttribute="bottom" id="txs-9f-GEc"/>
@@ -245,7 +246,7 @@
                             <constraint firstItem="FtP-cR-l9s" firstAttribute="leading" secondItem="Iio-lX-pNx" secondAttribute="leading" id="wd4-k9-faW"/>
                             <constraint firstItem="Prx-30-wSl" firstAttribute="centerY" secondItem="5S2-5d-Hfg" secondAttribute="centerY" constant="-119" id="xUX-3g-bN6"/>
                             <constraint firstItem="5Np-cN-e9p" firstAttribute="top" secondItem="NcI-Iy-s77" secondAttribute="bottom" constant="-2" id="xkL-U0-7pz"/>
-                            <constraint firstItem="IVu-VT-zIM" firstAttribute="top" secondItem="FtP-cR-l9s" secondAttribute="bottom" constant="-50" id="yOa-AN-6o4"/>
+                            <constraint firstItem="IVu-VT-zIM" firstAttribute="top" secondItem="FtP-cR-l9s" secondAttribute="bottom" id="yOa-AN-6o4"/>
                             <constraint firstItem="5Np-cN-e9p" firstAttribute="top" secondItem="yfh-vs-sDp" secondAttribute="bottom" constant="-2" id="yuf-HM-Z2L"/>
                             <constraint firstItem="FtP-cR-l9s" firstAttribute="leading" secondItem="8bF-Zq-UVt" secondAttribute="trailing" constant="-78" id="zWr-sO-tL5"/>
                         </constraints>
@@ -258,6 +259,7 @@
                     <connections>
                         <outlet property="adBanner" destination="FtP-cR-l9s" id="BRI-89-xgs"/>
                         <outlet property="bannerBottomConstraint" destination="yOa-AN-6o4" id="blO-JC-ZS0"/>
+                        <outlet property="bannerHeight" destination="5eM-N8-ujf" id="SU4-ZO-j1B"/>
                         <outlet property="bg" destination="grc-V8-bxv" id="3bC-ha-dQn"/>
                         <outlet property="buyBannerBtn" destination="jBH-HL-3T6" id="sb1-6Y-fzp"/>
                         <outlet property="flowerGameView" destination="5S2-5d-Hfg" id="XPe-NN-4Xc"/>
@@ -561,20 +563,21 @@
                                 <color key="shadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="c12-Cs-NoO" userLabel="elimina-banner">
-                                <rect key="frame" x="40" y="534" width="240" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzc-mC-Rfn" userLabel="elimina-banner">
+                                <rect key="frame" x="0.0" y="538" width="152" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="KGn-CD-QQS"/>
-                                    <constraint firstAttribute="height" constant="27" id="fS1-Xb-8Ac"/>
+                                    <constraint firstAttribute="height" constant="20" id="3Mk-e0-463"/>
+                                    <constraint firstAttribute="width" constant="152" id="gcY-by-aaD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Remove ad banner" image="close-banner">
+                                <state key="normal" title="Remove the banner" image="close-banner-small">
                                     <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="deleteBanner:" destination="9Zp-ES-HxJ" eventType="touchUpInside" id="nnG-C6-oVs"/>
+                                    <action selector="deleteBanner:" destination="9Zp-ES-HxJ" eventType="touchUpInside" id="eJq-1n-ocr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUp-d8-Lr2" userLabel="avanti">
@@ -594,6 +597,22 @@
                                     <action selector="playGame:" destination="9Zp-ES-HxJ" eventType="touchUpInside" id="RHN-0d-yCz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c12-Cs-NoO" userLabel="restore-purchases">
+                                <rect key="frame" x="168" y="538" width="152" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="JuT-Ce-sXR"/>
+                                    <constraint firstAttribute="width" constant="152" id="qYa-fY-Xbh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PTSerif-CaptionItalic" family="PT Serif Caption" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Restore purchases" image="restore-purchases">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="restorePurchases:" destination="9Zp-ES-HxJ" eventType="touchUpInside" id="Aij-pH-wJb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -601,11 +620,14 @@
                             <constraint firstItem="G9X-za-AyB" firstAttribute="top" secondItem="xRn-dB-h6X" secondAttribute="bottom" id="8Zz-S4-Tga"/>
                             <constraint firstItem="zCF-Ie-SvN" firstAttribute="leading" secondItem="eOK-sv-lPb" secondAttribute="trailing" constant="-310" id="ANJ-Vv-ipK"/>
                             <constraint firstItem="lw1-ps-jge" firstAttribute="top" secondItem="eOK-sv-lPb" secondAttribute="bottom" constant="-143" id="AoJ-3m-Cy7"/>
+                            <constraint firstItem="c12-Cs-NoO" firstAttribute="centerX" secondItem="xRn-dB-h6X" secondAttribute="centerX" constant="84" id="CT1-1Z-9lm"/>
                             <constraint firstItem="89P-rv-G7V" firstAttribute="top" secondItem="e9i-On-yyW" secondAttribute="bottom" constant="12" id="FgT-zV-Q64"/>
-                            <constraint firstItem="G9X-za-AyB" firstAttribute="top" secondItem="c12-Cs-NoO" secondAttribute="bottom" constant="7" id="Mt2-U2-XZM"/>
                             <constraint firstAttribute="trailing" secondItem="xRn-dB-h6X" secondAttribute="trailing" id="O0T-ih-ogE"/>
                             <constraint firstItem="VUp-d8-Lr2" firstAttribute="top" secondItem="k1X-t1-3sX" secondAttribute="bottom" constant="-1" id="QTq-n8-U73"/>
+                            <constraint firstItem="G9X-za-AyB" firstAttribute="top" secondItem="c12-Cs-NoO" secondAttribute="bottom" constant="10" id="R21-M6-JcM"/>
                             <constraint firstItem="eOK-sv-lPb" firstAttribute="centerX" secondItem="xRn-dB-h6X" secondAttribute="centerX" id="R5p-Dm-DhH"/>
+                            <constraint firstItem="G9X-za-AyB" firstAttribute="top" secondItem="Mzc-mC-Rfn" secondAttribute="bottom" constant="10" id="Vdd-kT-Bo3"/>
+                            <constraint firstItem="Mzc-mC-Rfn" firstAttribute="centerX" secondItem="xRn-dB-h6X" secondAttribute="centerX" constant="-84" id="bZ0-rU-TO9"/>
                             <constraint firstItem="1lm-8T-cuo" firstAttribute="top" secondItem="eOK-sv-lPb" secondAttribute="bottom" constant="-143" id="cZh-aW-TKS"/>
                             <constraint firstItem="eOK-sv-lPb" firstAttribute="top" secondItem="zCF-Ie-SvN" secondAttribute="bottom" id="eT2-rg-KB8"/>
                             <constraint firstItem="eOK-sv-lPb" firstAttribute="leading" secondItem="1lm-8T-cuo" secondAttribute="trailing" constant="-28" id="hKG-GN-0b5"/>
@@ -615,7 +637,6 @@
                             <constraint firstItem="k1X-t1-3sX" firstAttribute="centerX" secondItem="VUp-d8-Lr2" secondAttribute="centerX" constant="-5.5" id="odd-de-Lbt"/>
                             <constraint firstAttribute="trailing" secondItem="89P-rv-G7V" secondAttribute="trailing" constant="12" id="pAh-p0-OeD"/>
                             <constraint firstItem="k1X-t1-3sX" firstAttribute="centerX" secondItem="eOK-sv-lPb" secondAttribute="centerX" constant="-5.5" id="tGF-OE-3Ra"/>
-                            <constraint firstItem="xRn-dB-h6X" firstAttribute="centerX" secondItem="c12-Cs-NoO" secondAttribute="centerX" id="uPS-HM-afr"/>
                             <constraint firstItem="zCF-Ie-SvN" firstAttribute="top" secondItem="oIh-K7-5Qc" secondAttribute="bottom" constant="5" id="wcj-WK-6W8"/>
                             <constraint firstItem="xRn-dB-h6X" firstAttribute="top" secondItem="e9i-On-yyW" secondAttribute="bottom" id="xvX-8r-McD"/>
                             <constraint firstItem="k1X-t1-3sX" firstAttribute="top" secondItem="eOK-sv-lPb" secondAttribute="bottom" constant="-7" id="yzw-jd-ijB"/>
@@ -635,7 +656,9 @@
                         <outlet property="logoHeight" destination="t3d-hK-bmn" id="Q1k-Dz-75D"/>
                         <outlet property="nextBtn" destination="VUp-d8-Lr2" id="hOc-Rg-C8M"/>
                         <outlet property="pageControl" destination="k1X-t1-3sX" id="BC9-dA-hLZ"/>
-                        <outlet property="removeBannerBtn" destination="c12-Cs-NoO" id="5Mt-Pf-yYw"/>
+                        <outlet property="removeBannerBtn" destination="Mzc-mC-Rfn" id="l2R-cI-e6X"/>
+                        <outlet property="restoreBtnCenterX" destination="CT1-1Z-9lm" id="gh7-Rg-oeh"/>
+                        <outlet property="restorePurchasesBtn" destination="c12-Cs-NoO" id="tSq-7M-OC5"/>
                         <outlet property="scrollView" destination="eOK-sv-lPb" id="1bM-qi-pxa"/>
                     </connections>
                 </viewController>
@@ -958,6 +981,7 @@
         <image name="bg-btn" width="186" height="55"/>
         <image name="check-dot" width="32" height="31"/>
         <image name="close-banner" width="24" height="24"/>
+        <image name="close-banner-small" width="19" height="19"/>
         <image name="close-btn" width="27" height="27"/>
         <image name="fb-btn-friend" width="108" height="31"/>
         <image name="fb-btn-login" width="106" height="31"/>
@@ -972,6 +996,7 @@
         <image name="logo-small.png" width="185" height="105"/>
         <image name="man-sign" width="104" height="103"/>
         <image name="man-sign-small" width="34" height="33"/>
+        <image name="restore-purchases" width="19" height="19"/>
         <image name="right-arrow" width="24" height="49"/>
         <image name="settings-btn" width="29" height="29"/>
         <image name="shake-ico" width="44" height="46"/>

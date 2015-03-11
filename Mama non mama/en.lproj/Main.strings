@@ -53,8 +53,11 @@
 /* Class = "IBUITextField"; placeholder = "scrivi il tuo nome"; ObjectID = "W5D-05-sd7"; */
 "W5D-05-sd7.placeholder" = "write your name";
 
-/* Class = "IBUIButton"; normalTitle = "Rimuovi banner pubblicitario"; ObjectID = "c12-Cs-NoO"; */
-"c12-Cs-NoO.normalTitle" = "Remove ad banner";
+/* Class = "IBUIButton"; normalTitle = "Ripristina acquisti"; ObjectID = "c12-Cs-NoO"; */
+"c12-Cs-NoO.normalTitle" = "Restore purchases";
+
+/* Class = "IBUIButton"; normalTitle = "Rimuovi il banner"; ObjectID = "Mzc-mC-Rfn"; */
+"Mzc-mC-Rfn.normalTitle" = "Remove the banner";
 
 /* Class = "IBUILabel"; text = "Sei una / un"; ObjectID = "ceH-qE-Brq"; */
 "ceH-qE-Brq.text" = "You're a / or";

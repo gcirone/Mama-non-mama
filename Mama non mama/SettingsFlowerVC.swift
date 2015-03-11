@@ -9,11 +9,12 @@
 import UIKit
 import StoreKit
 
-class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+class SettingsFlowerVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var flowerScrollCenterY: NSLayoutConstraint!
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var logoBottomSpace: NSLayoutConstraint!
+    @IBOutlet weak var restoreBtnCenterX: NSLayoutConstraint!
     
     @IBOutlet weak var bg: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -21,6 +22,7 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var closeSettings: UIButton!
     @IBOutlet weak var removeBannerBtn: UIButton!
+    @IBOutlet weak var restorePurchasesBtn: UIButton!
     
     var flowersProduct: SKProduct!
     var flowers: NSMutableArray?
@@ -28,7 +30,6 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     
     deinit {
         //println("SettingsFlowerVC.deinit")
-        SKPaymentQueue.defaultQueue().removeTransactionObserver(self)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -72,7 +73,7 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
         //refill settings value
         refillSettings()
         
-        //register to banner purchase event
+        //register to event
         registerToEvents()
         
     }
@@ -91,10 +92,19 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
         
         NSNotificationCenter.defaultCenter()
             .addObserver(self, selector: "removeBannerBtn:", name: "bannerPurchased", object: nil)
-        removeBannerBtn(nil)
+        
+        //purchase notifications
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "purchaseFlowers:", name: IAPHelperPurchaseNotification, object: nil)
         
         NSNotificationCenter.defaultCenter()
-            .addObserver(self, selector: "purchaseAdRemovalError:", name: "bannerPurchasedFailed", object: nil)
+            .addObserver(self, selector: "purchaseFlowersError:", name: IAPHelperErrorNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "purchaseAdRemovalError:", name: IAPHelperErrorNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "restorePurchasesFinished:", name: IAPHelperRestoreNotification, object: nil)
 
     }
     
@@ -129,7 +139,6 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
             
         }
         
-        
     }
 
     
@@ -138,11 +147,15 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     func removeBannerBtn(notification:NSNotification?) {
         //println("removeBannerBtn")
         
-        //remove banner buttom
-        if let status = SettingsApp.CNF["ads-payment"] as? String {
-            if status == "purchased" {
-                removeBannerBtn.hidden = true
-                removeBannerBtn.userInteractionEnabled = false
+        //remove banner button
+        if MamaIAPHelper.bannerPurchased {
+            removeBannerBtn.hidden = true
+            removeBannerBtn.userInteractionEnabled = false
+            restoreBtnCenterX.constant = 0
+            
+            if MamaIAPHelper.flowersPurchased {
+                restorePurchasesBtn.hidden = true
+                restorePurchasesBtn.userInteractionEnabled = false
             }
         }
         
@@ -150,15 +163,17 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     
     @IBAction func deleteBanner(sender: UIButton) {
         //println("SettingsFlowerVC.deleteBanner")
-        //ContainerVC.sharedInstance.removeAdBannerFromSetting()
         NSNotificationCenter.defaultCenter().postNotificationName("removeBannerFromSetting", object:self)
     }
     
     func purchaseAdRemovalError(notification:NSNotification) {
-        //println("purchaseAdRemovalError flowers")
-        let title = NSLocalizedString("Remove Banner", comment:"")
-        let message = NSLocalizedString("The banner payment failed!!! Please try later.", comment:"")
-        Utility.alert(title:title, message:message, view:self)
+        let productIdentifier: String = notification.object as String;
+        if productIdentifier == IdentifierBannerRemove && self.view.superview != nil {
+            //println("purchaseAdRemovalError")
+            let title = NSLocalizedString("Remove Banner", comment:"")
+            let message = NSLocalizedString("The banner payment failed!!! Please try later.", comment:"")
+            Utility.alert(title:title, message:message, view:self)
+        }
     }
     
     
@@ -180,6 +195,11 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
                 selectImage.alpha = 0
             }
         }
+      
+        //fake tap on flower
+        let tmpBtn = UIButton()
+        tmpBtn.tag = pageControl.currentPage
+        flowerSelect(tmpBtn)
         
     }
     
@@ -324,95 +344,66 @@ class SettingsFlowerVC: UIViewController, UIScrollViewDelegate, SKPaymentTransac
     // MARK: - Flowers Payment
     
     func initFlowerPayment(){
+        //println("initFlowerPayment")
         
-        //SettingsApp.CNF["flowers-payment"] = nil
-        //SettingsApp.CNF["flowers-payment"] = "purchased"
-        //println(SettingsApp.CNF["flowers-payment"])
+        flowersProduct = MamaIAPHelper.sharedInstance.flowersProduct
+        removeBannerBtn(nil)
         
-        if SettingsApp.CNF["flowers-payment"] == nil {
-            SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-            getFlowersPaymentInfo()
-        } else if let status = SettingsApp.CNF["flowers-payment"] as? String {
-            if status == "purchased" {
-                flowersPayed()
-            } else {
-                SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-                getFlowersPaymentInfo()
-            }
+        //for test
+        //NSUserDefaults.standardUserDefaults().setBool(false, forKey:IdentifierAddFlowers)
+        //NSUserDefaults.standardUserDefaults().synchronize()
+        
+        if MamaIAPHelper.flowersPurchased {
+            //println("initFlowerPayment purchased")
+            flowersPayed()
         }
         
     }
     
     func buyFlowers () {
-        //println("buy flowers")
+        //println("buy flowers \(flowersProduct)")
         if flowersProduct != nil && SKPaymentQueue.canMakePayments() {
-            let payment: SKPayment = SKPayment(product: flowersProduct)
-            SKPaymentQueue.defaultQueue().addPayment(payment)
-        }
-    }
-    
-    func getFlowersPaymentInfo() {
-        if SKPaymentQueue.canMakePayments() {
-            let productID:NSSet = NSSet(object: "com.flashdevit.flowers")
-            let request:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
-            request.delegate = self
-            request.start()
-        }
-    }
-    
-    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
-        let products = response.products
-        if products.count != 0 {
-            flowersProduct = products[0] as SKProduct
-            //println("flowers product title:\(flowersProduct.localizedTitle) dsc:\(flowersProduct.localizedDescription)")
-        }
-    }
-    
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        for transaction:AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
-                //println("flower transactionIdentifier \(trans.payment.productIdentifier)")
-                if trans.payment.productIdentifier == "com.flashdevit.flowers" {
-                    
-                    switch trans.transactionState {
-                    case .Purchased:
-                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
-                        //println("flowers paymentQueue .Purchased")
-                        purchaseFlowers()
-                        break
-                    case .Failed:
-                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
-                        //println("flowers paymentQueue .Failed")
-                        purchaseFlowersError()
-                        break
-                    case .Restored:
-                        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-                        //println("flowers paymentQueue .Restored")
-                        break
-                    default:
-                        break
-                    }
-                    
-                }
-                
-            }
+            SettingsApp.CNF["audio-stop"] = true
+            NSNotificationCenter.defaultCenter().postNotificationName("stopBgMusic", object:self)
+            MamaIAPHelper.sharedInstance.buyProduct(flowersProduct)
         }
     }
 
-    func purchaseFlowers(){
-        //println("purchaseFlowers")
-        SettingsApp.CNF["flowers-payment"] = "purchased"
-        NSNotificationCenter.defaultCenter().postNotificationName("flowersPurchased", object:self)
-        flowersPayed()
+    func purchaseFlowers(notification:NSNotification) {
+        let productIdentifier: String = notification.object as String;
+        if productIdentifier == IdentifierAddFlowers {
+            //println("purchaseFlowers")
+            NSNotificationCenter.defaultCenter().postNotificationName("flowersPurchased", object:self)
+            flowersPayed()
+            removeBannerBtn(nil)
+        }
     }
     
-    func purchaseFlowersError(){
-        //println("purchaseFlowersError")
-        let title = NSLocalizedString("Add Flowers", comment:"")
-        let message = NSLocalizedString("The flower payment failed!!! Please try later.", comment:"")
+    func purchaseFlowersError(notification:NSNotification){
+        let productIdentifier: String = notification.object as String;
+        if productIdentifier == IdentifierAddFlowers && self.view.superview != nil {
+            //println("purchaseFlowersError")
+            let title = NSLocalizedString("Add Flowers", comment:"")
+            let message = NSLocalizedString("The flower payment failed!!! Please try later.", comment:"")
+            Utility.alert(title:title, message:message, view:self)
+        }
+    }
+    
+    @IBAction func restorePurchases(sender: UIButton) {
+        //println("restorePurchases")
+        SettingsApp.CNF["audio-stop"] = true
+        NSNotificationCenter.defaultCenter().postNotificationName("stopBgMusic", object:self)
+        MamaIAPHelper.sharedInstance.restoreCompletedTransactions()
+    }
+    
+    func restorePurchasesFinished(notification:NSNotification) {
+        let title = NSLocalizedString("Restore purchases", comment:"")
+        let message = NSLocalizedString("Restore purchases successful. Thank you.", comment:"")
         Utility.alert(title:title, message:message, view:self)
     }
 
+    
+    
     
     
     // MARK: - Navigation

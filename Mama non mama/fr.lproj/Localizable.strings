@@ -15,7 +15,7 @@
 
 "LOVES ME NOT!" = "NE M'AIME PAS!";
 
-"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "PARCOURIR LES PÉTALES ET DÉCOUVRIR SI TON AMOUR T'AIME";
+"BROWSE THE PETALS AND CHECK OUT IF YOUR PARTNER LOVES YOU" = "PARCOURS LES PÉTALES ET DÉCOUVRES SI TON AMOUR T'AIME";
 
 "LOVES" = "AIME";
 
@@ -34,3 +34,7 @@
 "Logout" = "Logout";
 
 "Friends" = "Amis";
+
+"Restore purchases" = "Restaurer l'achat";
+
+"Restore purchases successful. Thank you." = "Achats restaurés. Merci.";

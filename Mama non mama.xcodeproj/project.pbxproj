@@ -14,6 +14,7 @@
 		D81392871A8DA594004A3C3B /* SpriteKit+Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81392861A8DA594004A3C3B /* SpriteKit+Spring.swift */; };
 		D81404961A41D1AD00C63019 /* SettingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81404951A41D1AD00C63019 /* SettingsApp.swift */; };
 		D81404981A41D9FB00C63019 /* SettingsUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81404971A41D9FB00C63019 /* SettingsUserVC.swift */; };
+		D81922061AA4C5FC00F0901D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81922051AA4C5FB00F0901D /* AudioToolbox.framework */; };
 		D8605D6C1A8D123B00CB6268 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8605D6B1A8D123B00CB6268 /* FacebookSDK.framework */; };
 		D884018A1A8B72A800F0451F /* flower-standard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D88401881A8B72A800F0451F /* flower-standard.atlas */; };
 		D884018B1A8B72A800F0451F /* flower-yellow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D88401891A8B72A800F0451F /* flower-yellow.atlas */; };
@@ -30,7 +31,7 @@
 		D89392291A8BD22100E876DB /* minuetto96.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D89392281A8BD22100E876DB /* minuetto96.mp3 */; };
 		D8A05A371A8E64D500C3987C /* star-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A05A351A8E64D500C3987C /* star-particle.png */; };
 		D8A05A4C1A8E681100C3987C /* bg-flower-magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = D8A05A4B1A8E681100C3987C /* bg-flower-magic.sks */; };
-		D8A05A4E1A8E742600C3987C /* herth-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A05A4D1A8E742600C3987C /* herth-particle.png */; };
+		D8ACD2421AA1D2EC0045B4C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ACD2411AA1D2EC0045B4C8 /* AVFoundation.framework */; };
 		D8C6977B1A92B51A00F830F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8C6977D1A92B51A00F830F2 /* InfoPlist.strings */; };
 		D8C697831A92B52900F830F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8C697851A92B52900F830F2 /* Localizable.strings */; };
 		D8C6978B1A92B54900F830F2 /* logo-big.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C6978D1A92B54900F830F2 /* logo-big.png */; };
@@ -46,6 +47,8 @@
 		D8FBE04B1A8CE6B800C6EDC9 /* beethoven-not-love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D8FBE0491A8CE6B800C6EDC9 /* beethoven-not-love.mp3 */; };
 		D8FBE04C1A8CE6B800C6EDC9 /* mozart-love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D8FBE04A1A8CE6B800C6EDC9 /* mozart-love.mp3 */; };
 		D8FBE04E1A8CF11A00C6EDC9 /* iiFaderForAvAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBE04D1A8CF11A00C6EDC9 /* iiFaderForAvAudioPlayer.swift */; };
+		D8FE2DE31AAF03FA008FCD96 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE2DE21AAF03FA008FCD96 /* IAPHelper.swift */; };
+		D8FE2DE51AAF36FD008FCD96 /* MamaIAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE2DE41AAF36FD008FCD96 /* MamaIAPHelper.swift */; };
 		E11598811A20DD4F00110A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11598801A20DD4F00110A5F /* AppDelegate.swift */; };
 		E11598861A20DD4F00110A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11598841A20DD4F00110A5F /* Main.storyboard */; };
 		E11598881A20DD4F00110A5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11598871A20DD4F00110A5F /* Images.xcassets */; };
@@ -78,6 +81,7 @@
 		D81392861A8DA594004A3C3B /* SpriteKit+Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpriteKit+Spring.swift"; sourceTree = "<group>"; };
 		D81404951A41D1AD00C63019 /* SettingsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsApp.swift; sourceTree = "<group>"; };
 		D81404971A41D9FB00C63019 /* SettingsUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUserVC.swift; sourceTree = "<group>"; };
+		D81922051AA4C5FB00F0901D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D8605D6B1A8D123B00CB6268 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D8605D6D1A8D13DF00CB6268 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		D88401881A8B72A800F0451F /* flower-standard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "flower-standard.atlas"; sourceTree = "<group>"; };
@@ -95,7 +99,7 @@
 		D89392281A8BD22100E876DB /* minuetto96.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = minuetto96.mp3; sourceTree = "<group>"; };
 		D8A05A351A8E64D500C3987C /* star-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-particle.png"; sourceTree = "<group>"; };
 		D8A05A4B1A8E681100C3987C /* bg-flower-magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "bg-flower-magic.sks"; sourceTree = "<group>"; };
-		D8A05A4D1A8E742600C3987C /* herth-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "herth-particle.png"; sourceTree = "<group>"; };
+		D8ACD2411AA1D2EC0045B4C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D8C697751A92B47D00F830F2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		D8C697761A92B49200F830F2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		D8C697771A92B4A700F830F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 		D8FBE0491A8CE6B800C6EDC9 /* beethoven-not-love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beethoven-not-love.mp3"; sourceTree = "<group>"; };
 		D8FBE04A1A8CE6B800C6EDC9 /* mozart-love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mozart-love.mp3"; sourceTree = "<group>"; };
 		D8FBE04D1A8CF11A00C6EDC9 /* iiFaderForAvAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiFaderForAvAudioPlayer.swift; sourceTree = "<group>"; };
+		D8FE2DE21AAF03FA008FCD96 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		D8FE2DE41AAF36FD008FCD96 /* MamaIAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MamaIAPHelper.swift; sourceTree = "<group>"; };
 		E115987B1A20DD4F00110A5F /* Mama non mama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mama non mama.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115987F1A20DD4F00110A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11598801A20DD4F00110A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81922061AA4C5FC00F0901D /* AudioToolbox.framework in Frameworks */,
+				D8ACD2421AA1D2EC0045B4C8 /* AVFoundation.framework in Frameworks */,
 				E1ACFC931A7BE68F00A3CB31 /* iAd.framework in Frameworks */,
 				E1ACFC911A7BE61F00A3CB31 /* StoreKit.framework in Frameworks */,
 				D8605D6C1A8D123B00CB6268 /* FacebookSDK.framework in Frameworks */,
@@ -198,14 +206,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1516BCC61A8A4CBF0064BE3F /* Utility */ = {
+		1516BCC61A8A4CBF0064BE3F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				1516BCC41A8A4CB20064BE3F /* Utility.swift */,
 				D8FBE04D1A8CF11A00C6EDC9 /* iiFaderForAvAudioPlayer.swift */,
 				D81392861A8DA594004A3C3B /* SpriteKit+Spring.swift */,
+				D8FE2DE21AAF03FA008FCD96 /* IAPHelper.swift */,
+				D8FE2DE41AAF36FD008FCD96 /* MamaIAPHelper.swift */,
 			);
-			name = Utility;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		D80E875A1A929CCA009A928A /* Images */ = {
@@ -234,7 +244,6 @@
 		D8A05A381A8E65EA00C3987C /* Particle */ = {
 			isa = PBXGroup;
 			children = (
-				D8A05A4D1A8E742600C3987C /* herth-particle.png */,
 				D8A05A351A8E64D500C3987C /* star-particle.png */,
 				D8A05A4B1A8E681100C3987C /* bg-flower-magic.sks */,
 			);
@@ -290,7 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				D8605D6D1A8D13DF00CB6268 /* Bridge-Header.h */,
-				1516BCC61A8A4CBF0064BE3F /* Utility */,
+				1516BCC61A8A4CBF0064BE3F /* Utilities */,
 				D8EB77AB1A4F3B2500A8C425 /* DeasyGame */,
 				E134B4661A225BC8003DC6ED /* Settings */,
 				E11598801A20DD4F00110A5F /* AppDelegate.swift */,
@@ -376,6 +385,8 @@
 		E1ACFC941A7BEAFE00A3CB31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D81922051AA4C5FB00F0901D /* AudioToolbox.framework */,
+				D8ACD2411AA1D2EC0045B4C8 /* AVFoundation.framework */,
 				D8605D6B1A8D123B00CB6268 /* FacebookSDK.framework */,
 				E1ACFC921A7BE68F00A3CB31 /* iAd.framework */,
 				E1ACFC901A7BE61F00A3CB31 /* StoreKit.framework */,
@@ -497,7 +508,6 @@
 				D8F82DE01A426E5400E8A5F8 /* flowers-man.plist in Resources */,
 				D8C697931A92B55A00F830F2 /* logo-big@2x.png in Resources */,
 				E11598881A20DD4F00110A5F /* Images.xcassets in Resources */,
-				D8A05A4E1A8E742600C3987C /* herth-particle.png in Resources */,
 				D8FBE04C1A8CE6B800C6EDC9 /* mozart-love.mp3 in Resources */,
 				D8C6978B1A92B54900F830F2 /* logo-big.png in Resources */,
 				D8C6979B1A92B56500F830F2 /* logo-big@3x.png in Resources */,
@@ -529,6 +539,8 @@
 				D81404981A41D9FB00C63019 /* SettingsUserVC.swift in Sources */,
 				E134B4681A2274DB003DC6ED /* SettingsSexVC.swift in Sources */,
 				D88401A11A8BA5EC00F0451F /* FlowerPink.swift in Sources */,
+				D8FE2DE31AAF03FA008FCD96 /* IAPHelper.swift in Sources */,
+				D8FE2DE51AAF36FD008FCD96 /* MamaIAPHelper.swift in Sources */,
 				D8FBE04E1A8CF11A00C6EDC9 /* iiFaderForAvAudioPlayer.swift in Sources */,
 				E11598811A20DD4F00110A5F /* AppDelegate.swift in Sources */,
 				D81404961A41D1AD00C63019 /* SettingsApp.swift in Sources */,
@@ -764,6 +776,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = _LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -773,6 +786,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888_PNG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mama non Mama/Bridge-Header.h";
 			};
 			name = Debug;
@@ -784,6 +798,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = _LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -793,6 +808,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888_PNG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mama non Mama/Bridge-Header.h";
 			};
 			name = Release;

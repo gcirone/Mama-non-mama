@@ -24,7 +24,7 @@
 "8Rd-ml-eWO.text" = "Écris le nom de ton amour";
 
 /* Class = "IBUILabel"; text = "Completa"; ObjectID = "8bF-Zq-UVt"; */
-"8bF-Zq-UVt.text" = "Finir";
+"8bF-Zq-UVt.text" = "Compléter";
 
 /* Class = "IBUIViewController"; title = "SettingsFlowerVC"; ObjectID = "9Zp-ES-HxJ"; */
 "9Zp-ES-HxJ.title" = "SettingsFlowerVC";
@@ -36,7 +36,7 @@
 "Dka-Nx-9yF.title" = "SettingsSexVC";
 
 /* Class = "IBUILabel"; text = "SFOGLIA I PETALI E SCOPRI SE IL TUO AMORE TI AMA"; ObjectID = "Prx-30-wSl"; */
-"Prx-30-wSl.text" = "PARCOURIR LES PÉTALES ET DÉCOUVRIR SI TON AMOUR T'AIME";
+"Prx-30-wSl.text" = "PARCOURS LES PÉTALES ET DÉCOUVRES SI TON AMOUR T'AIME";
 
 /* Class = "IBUIButton"; normalTitle = "sesso"; ObjectID = "QvF-w2-zit"; */
 "QvF-w2-zit.normalTitle" = "sexe";
@@ -53,8 +53,11 @@
 /* Class = "IBUITextField"; placeholder = "scrivi il tuo nome"; ObjectID = "W5D-05-sd7"; */
 "W5D-05-sd7.placeholder" = "écris ton nom";
 
-/* Class = "IBUIButton"; normalTitle = "Rimuovi banner pubblicitario"; ObjectID = "c12-Cs-NoO"; */
-"c12-Cs-NoO.normalTitle" = "Retirer la bannière";
+/* Class = "IBUIButton"; normalTitle = "Ripristina acquisti"; ObjectID = "c12-Cs-NoO"; */
+"c12-Cs-NoO.normalTitle" = "Restaurer l'achat";
+
+/* Class = "IBUIButton"; normalTitle = "Rimuovi il banner"; ObjectID = "Mzc-mC-Rfn"; */
+"Mzc-mC-Rfn.normalTitle" = "Retirer la bannière";
 
 /* Class = "IBUILabel"; text = "Sei una / un"; ObjectID = "ceH-qE-Brq"; */
 "ceH-qE-Brq.text" = "Tu es un / une";
@@ -63,7 +66,7 @@
 "jf2-Oy-zdZ.normalTitle" = "Login";
 
 /* Class = "IBUILabel"; text = "Oppure selezionalo da Facebook"; ObjectID = "kbh-fE-nh1"; */
-"kbh-fE-nh1.text" = "Ou choisi de Facebook";
+"kbh-fE-nh1.text" = "Ou choisis de Facebook";
 
 /* Class = "IBUIButton"; normalTitle = "chiudi"; ObjectID = "l9a-lu-Ggv"; */
 "l9a-lu-Ggv.normalTitle" = "fermer";
@@ -81,4 +84,4 @@
 "yP5-8Y-kFk.title" = "SettingsUserVC";
 
 /* Class = "IBUILabel"; text = "SCEGLI IL FIORE CHE PIÙ ASSOMIGLIA AL TUO AMORE"; ObjectID = "zCF-Ie-SvN"; */
-"zCF-Ie-SvN.text" = "CHOISIR LA FLEUR QUI CONVIENT À VOTRE AMOUR LE PLUS";
+"zCF-Ie-SvN.text" = "CHOISIS LA FLEUR QUI CONVIENT À VOTRE AMOUR LE PLUS";

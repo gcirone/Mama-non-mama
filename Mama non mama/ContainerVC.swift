@@ -8,11 +8,12 @@
 
 import iAd
 import UIKit
-import StoreKit
 import SpriteKit
+import StoreKit
 import AVFoundation
+import AudioToolbox
 
-class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+class ContainerVC: UIViewController, ADBannerViewDelegate {
     
     @IBOutlet weak var bg: UIImageView!
     @IBOutlet weak var settingsBtn: UIButton!
@@ -34,37 +35,38 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     @IBOutlet weak var resultHearthMini5Flower: UIImageView!
     @IBOutlet weak var resultHearthMini6Flower: UIImageView!
     
-    @IBOutlet var flowerGameView: SKView!
-    var flowerSelect: SKNode?
-    
     @IBOutlet weak var logoSmall: UIImageView!
     @IBOutlet weak var logoSmallHeight: NSLayoutConstraint!
     @IBOutlet weak var logoSmallWidth: NSLayoutConstraint!
     @IBOutlet weak var infoLabelCenterY: NSLayoutConstraint!    
     @IBOutlet weak var bannerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     @IBOutlet weak var adBanner: ADBannerView!
     @IBOutlet weak var buyBannerBtn: UIButton!
     
-    var backgroundMusicPlayer: AVAudioPlayer!
+    @IBOutlet var flowerGameView: SKView!
+    var flowerSelect: SKNode?
+    
+    var backgroundMusicPlayer: AVAudioPlayer!    
     var bannerProduct: SKProduct!
+    var flowersProduct: SKProduct!
 
-    class var sharedInstance : ContainerVC {
+    class var sharedInstance: ContainerVC {
         struct Static {
-            static let instance: ContainerVC = ContainerVC()
+            static var instance: ContainerVC?
+            static var token: dispatch_once_t = 0
         }
-        return Static.instance
+        
+        dispatch_once(&Static.token) {
+            Static.instance = ContainerVC()
+        }
+        
+        return Static.instance!
     }
     
     deinit {
         //println("ContainerVC.deinit")
-        SKPaymentQueue.defaultQueue().removeTransactionObserver(self)
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        //println("ContainerVC.viewDidDisappear")
-        removeScene()
     }
     
     override func viewDidLoad() {
@@ -89,7 +91,31 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
             logoSmallWidth.constant = 300
             logoSmallHeight.constant = 170
             logoSmall.image = UIImage(named:"logo-big.png")
+            bannerHeight.constant = 66
         }
+        
+        //request iap products
+        MamaIAPHelper.sharedInstance.requestProducts({success, products in
+            if success {
+                for product in products as [SKProduct] {
+                    //println("Found product: \(product.localizedTitle) price:\(product.price.floatValue)")
+                    switch product.productIdentifier {
+                    case IdentifierBannerRemove:
+                         self.bannerProduct = product
+                         MamaIAPHelper.sharedInstance.bannerProduct = product
+                        break
+                    case IdentifierAddFlowers:
+                        self.flowersProduct = product
+                        MamaIAPHelper.sharedInstance.flowersProduct = product
+                        break
+                    default:
+                        break
+                    }
+                }
+            } else {
+                //println("Products not found.")
+            }
+        })
         
         //init ios ad banner
         initAdBanner()
@@ -101,11 +127,17 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         activeScene()
         
         //play background music
-        playBackgroundMusic("minuetto96.mp3")
+        setBackgroundMusic("minuetto96.mp3")
         
         //register to events
         registerToEvents()
         
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        //println("ContainerVC.viewDidDisappear")
+        removeScene()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -127,12 +159,22 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         
         NSNotificationCenter.defaultCenter()
             .addObserver(self, selector: "finalResultFlower:", name: "resultFlower", object: nil)
+
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "playBackgroundMusic:", name: "playBgMusic", object: nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "stopBackgroundMusic:", name: "stopBgMusic", object: nil)
         
         NSNotificationCenter.defaultCenter()
             .addObserver(self, selector: "removeAdBannerFromSetting:", name: "removeBannerFromSetting", object: nil)
         
+        //purchase notifications
         NSNotificationCenter.defaultCenter()
-            .addObserver(self, selector: "purchaseAdRemovalError:", name: "bannerPurchasedFailed", object: nil)
+            .addObserver(self, selector: "purchaseAdRemoval:", name: IAPHelperPurchaseNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "purchaseAdRemovalError:", name: IAPHelperErrorNotification, object: nil)
         
     }
     
@@ -239,7 +281,7 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         })
         
         resultHearthFlower.transform = CGAffineTransformMakeScale(0, 0)
-        UIView.animateWithDuration(2.2, delay: 1.2, usingSpringWithDamping:0.4, initialSpringVelocity:0,
+        UIView.animateWithDuration(2.4, delay: 1.2, usingSpringWithDamping:0.3, initialSpringVelocity:0,
             options: .CurveEaseInOut, animations: {
             self.resultHearthFlower.transform = CGAffineTransformMakeScale(1, 1)
         }, completion: { finished in
@@ -288,30 +330,47 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
-            NSNotificationCenter.defaultCenter()
-                .postNotificationName("shakeFlower", object:self)
+            NSNotificationCenter.defaultCenter().postNotificationName("shakeFlower", object:self)
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
     
     
     // MARK: - Background Music
     
-    func playBackgroundMusic(filename: String) {
+    func setBackgroundMusic(filename: String) {
         let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
         if (url == nil) {
-            println("Could not find file: \(filename)")
+            //println("Could not find file: \(filename)")
             return
         }
         var error: NSError? = nil
         backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
         if backgroundMusicPlayer == nil {
-            println("Could not create audio player: \(error!)")
+            //println("Could not create audio player: \(error!)")
             return
         }
-        backgroundMusicPlayer.volume = 1
         backgroundMusicPlayer.numberOfLoops = -1
+        SettingsApp.CNF["audio-stop"] = nil
+        playBackgroundMusic(nil)
+    }
+    
+    func playBackgroundMusic(notification:NSNotification?) {
+        //println("playBackgroundMusic")
+        if SettingsApp.CNF["audio-stop"] == nil {
+            soundIcon.setImage(UIImage(named: "sound-ico"), forState: .Normal)
+            backgroundMusicPlayer.prepareToPlay()
+            backgroundMusicPlayer.play()
+            backgroundMusicPlayer.volume = 1
+        }
+    }
+    
+    func stopBackgroundMusic(notification:NSNotification?) {
+        //println("stopBackgroundMusic \(backgroundMusicPlayer)")
+        soundIcon.setImage(UIImage(named: "sound-ico-off"), forState: .Normal)
+        backgroundMusicPlayer.stop()
         backgroundMusicPlayer.prepareToPlay()
-        backgroundMusicPlayer.play()
+        backgroundMusicPlayer.volume = 0
     }
     
     func fadeInBackgroundMusic() {
@@ -332,12 +391,16 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         let fader = iiFaderForAvAudioPlayer(player: backgroundMusicPlayer)
         if backgroundMusicPlayer.volume == 1 {
             soundIcon.setImage(UIImage(named: "sound-ico-off"), forState: .Normal)
-            //fader.fadeOut()
-            fader.fade(fromVolume: 1, toVolume: 0, duration: 1, velocity: 0.5)
+            fader.fade(fromVolume: 1, toVolume: 0, duration: 1, velocity: 0.5, onFinished:{finish in
+                self.backgroundMusicPlayer.stop()
+                self.backgroundMusicPlayer.prepareToPlay()
+            })
+            SettingsApp.CNF["audio-stop"] = true
         } else if backgroundMusicPlayer.volume == 0 {
             soundIcon.setImage(UIImage(named: "sound-ico"), forState: .Normal)
-            //fader.fadeIn()
+            backgroundMusicPlayer.play()
             fader.fade(fromVolume: 0, toVolume: 1, duration: 1, velocity: 0.5)
+            SettingsApp.CNF["audio-stop"] = nil
         }
     }
     
@@ -438,27 +501,19 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
         adBanner.delegate = self
         adBanner.hidden = true
         buyBannerBtn.hidden = true
-        bannerBottomConstraint.constant = -50
+        bannerBottomConstraint.constant = SettingsApp.IS_IPAD ? -66 : -50
+     
+        //for test
+        //NSUserDefaults.standardUserDefaults().setBool(false, forKey:IdentifierBannerRemove)
+        //NSUserDefaults.standardUserDefaults().synchronize()
         
-        //SettingsApp.CNF["ads-payment"] = nil
-        //SettingsApp.CNF["ads-payment"] = "purchased"
-        //println(SettingsApp.CNF["ads-payment"])
-        
-        if SettingsApp.CNF["ads-payment"] == nil {
-            SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-            getAdRemovalInfo()
-        } else if let status = SettingsApp.CNF["ads-payment"] as? String {
-            if status == "purchased" {
-                //println("initAdBanner purchased")
-                adBanner.hidden = true
-                adBanner.userInteractionEnabled = false
-                buyBannerBtn.hidden = true
-                buyBannerBtn.userInteractionEnabled = false
-                bannerBottomConstraint.constant = -50
-            } else {
-                SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-                getAdRemovalInfo()
-            }
+        if MamaIAPHelper.bannerPurchased {
+            //println("initAdBanner purchased")
+            adBanner.hidden = true
+            adBanner.userInteractionEnabled = false
+            buyBannerBtn.hidden = true
+            buyBannerBtn.userInteractionEnabled = false
+            bannerBottomConstraint.constant = SettingsApp.IS_IPAD ? -66 : -50
         }
         
     }
@@ -473,85 +528,45 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     
     func removeAdBanner() {
         //println("removeAdBanner \(bannerProduct)")
+        
         if bannerProduct != nil && SKPaymentQueue.canMakePayments() {
-            let payment: SKPayment = SKPayment(product: bannerProduct)
-            SKPaymentQueue.defaultQueue().addPayment(payment)
+            SettingsApp.CNF["audio-stop"] = true
+            stopBackgroundMusic(nil)
+            MamaIAPHelper.sharedInstance.buyProduct(bannerProduct)
         }
+        
     }
     
-    func getAdRemovalInfo() {
-        if SKPaymentQueue.canMakePayments() {
-            let productID:NSSet = NSSet(object: "com.flashdevit.adremoval")
-            let request:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
-            request.delegate = self
-            request.start()
-        }
-    }
-
-    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
-        let products = response.products
-        if products.count != 0 {
-            bannerProduct = products[0] as SKProduct
-            //println("product title:\(bannerProduct.localizedTitle) dsc:\(bannerProduct.localizedDescription)")
-        }
-    }
-        
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        for transaction:AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
-                //println("banner transactionIdentifier \(trans.payment.productIdentifier)")
-                if trans.payment.productIdentifier == "com.flashdevit.adremoval" {
-                    
-                    switch trans.transactionState {
-                    case .Purchased:
-                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
-                        //println("banner paymentQueue .Purchased")
-                        purchaseAdRemoval()
-                        break
-                    case .Failed:
-                        SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
-                        //println("banner paymentQueue .Failed")
-                        NSNotificationCenter.defaultCenter().postNotificationName("bannerPurchasedFailed", object:self)
-                        break
-                    case .Restored:
-                        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-                        //println("banner paymentQueue .Restored")
-                        break
-                    default:
-                        break
-                    }
-                    
-                }
-            }
-        }
-    }
-
-    func purchaseAdRemoval() {
-        //println("purchaseAdRemoval")
-        
-        SettingsApp.CNF["ads-payment"] = "purchased"
-        NSNotificationCenter.defaultCenter().postNotificationName("bannerPurchased", object:self)
-        
-        if adBanner != nil {
-            adBanner.hidden = true
-            adBanner.userInteractionEnabled = false
-            buyBannerBtn.hidden = true
-            buyBannerBtn.userInteractionEnabled = false
+    func purchaseAdRemoval(notification:NSNotification) {
+        let productIdentifier: String = notification.object as String;
+        if productIdentifier == IdentifierBannerRemove {
             
-            bannerBottomConstraint.constant = -50
-            UIView.animateWithDuration(0.4, delay: 0.1, options: .CurveEaseOut, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
+            //println("purchaseAdRemoval")
+            NSNotificationCenter.defaultCenter().postNotificationName("bannerPurchased", object:self)
+            
+            if adBanner != nil {
+                adBanner.hidden = true
+                adBanner.userInteractionEnabled = false
+                buyBannerBtn.hidden = true
+                buyBannerBtn.userInteractionEnabled = false
+                
+                bannerBottomConstraint.constant = SettingsApp.IS_IPAD ? -66 : -50
+                UIView.animateWithDuration(0.4, delay: 0.1, options: .CurveEaseOut, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+            
         }
-        
     }
     
     func purchaseAdRemovalError(notification:NSNotification) {
-        //println("purchaseAdRemovalError container")
-        if self.view.superview != nil {
+        let productIdentifier: String = notification.object as String;
+        if productIdentifier == IdentifierBannerRemove && self.view.superview != nil{
+            //println("purchaseAdRemovalError")
             let title = NSLocalizedString("Remove Banner", comment:"")
             let message = NSLocalizedString("The banner payment failed!!! Please try later.", comment:"")
             Utility.alert(title:title, message:message, view:self)
+            
         }
     }
     
@@ -562,7 +577,8 @@ class ContainerVC: UIViewController, ADBannerViewDelegate, SKPaymentTransactionO
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         //println("bannerViewDidLoadAd")
         
-        if SettingsApp.CNF["ads-payment"] == nil && true {
+        if !MamaIAPHelper.bannerPurchased {
+            
             adBanner.hidden = false
             buyBannerBtn.hidden = false
             

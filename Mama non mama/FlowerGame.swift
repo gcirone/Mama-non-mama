@@ -85,13 +85,17 @@ class FlowerGame: SKScene {
         initAnimation()
         
         
-        //magic aemitter
-        let magicEmitterPath = NSBundle.mainBundle().pathForResource("bg-flower-magic", ofType: "sks")
-        let magicEmitter: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(magicEmitterPath!) as SKEmitterNode
-        magicEmitter.position = CGPointMake(midX, midY)
-        magicEmitter.zPosition = -2
-        //magicEmitter.advanceSimulationTime(10)
-        addChild(magicEmitter)
+        if !SettingsApp.IS_IPHONE4 {
+            //magic aemitter
+            let magicEmitterPath = NSBundle.mainBundle().pathForResource("bg-flower-magic", ofType: "sks")
+            let magicEmitter: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(magicEmitterPath!) as SKEmitterNode
+            magicEmitter.position = CGPointMake(midX, midY)
+            magicEmitter.zPosition = -2
+            magicEmitter.name = "magicEmitter"
+            magicEmitter.particleBirthRate = 20
+            //magicEmitter.advanceSimulationTime(10)
+            addChild(magicEmitter)
+        }
         
         //magic aemitter 2
         /*let magivEmitterPath2 = NSBundle.mainBundle().pathForResource("bg-flower-magic2", ofType: "sks")
@@ -110,20 +114,24 @@ class FlowerGame: SKScene {
         }
         flowerStartPosition = CGPointMake(midX, midY - midYOffset)
         
-        let showFlower = SKAction.moveTo(flowerStartPosition, duration: 2.2, delay:0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0)
+        let showFlower = SKAction.moveTo(flowerStartPosition, duration: 2.2, delay:0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0)
         showFlower.timingMode = SKActionTimingMode.EaseInEaseOut;
         
         let delay = SKAction.waitForDuration(0.3);
-        flower?.runAction(SKAction.sequence([delay, showFlower]), withKey:"start")
+        flower?.runAction(SKAction.sequence([delay, showFlower, SKAction.runBlock() {
+            if let magicEmitter = self.childNodeWithName("magicEmitter") as? SKEmitterNode {
+                magicEmitter.particleBirthRate = 220
+            }
+        }]), withKey:"start")
         
     }
     
     func finishAnimation() {
         
-        let showFlower = SKAction.moveTo(CGPointMake(midX, -midY/2), duration: 1.8, delay:0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0)
+        let showFlower = SKAction.moveTo(CGPointMake(midX, -midY/2), duration: 1.8, delay:0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0)
         showFlower.timingMode = SKActionTimingMode.EaseIn;
         
-        let delay = SKAction.waitForDuration(0.1);
+        let delay = SKAction.waitForDuration(0.2);
         flower?.runAction(SKAction.sequence([delay, showFlower]), withKey:"start")
         
     }
@@ -173,6 +181,11 @@ class FlowerGame: SKScene {
     
     func finishGame() {
         //println("gioco finito risultato mama:\(mama)")
+        
+        if let magicEmitter = childNodeWithName("magicEmitter") as? SKEmitterNode {
+            magicEmitter.particleBirthRate = 0
+        }
+        
         finishAnimation();
         
         NSNotificationCenter.defaultCenter()
@@ -182,8 +195,7 @@ class FlowerGame: SKScene {
     func shakeFlowerDetect(notification:NSNotification) {
         //println("shake detected")
         
-        flower?.enumerateChildNodesWithName("*", usingBlock: {
-            (node, stop) in
+        flower?.enumerateChildNodesWithName("*", usingBlock: { node, stop in
             
             let petal: SKSpriteNode = node as SKSpriteNode
             if node.name?.contains("petalo") == true {
@@ -251,11 +263,11 @@ class FlowerGame: SKScene {
                 let delta = CGPoint(x:location.x - previousLocation.x, y:location.y - previousLocation.y)
                 
                 //println(flower?.position.distance(flowerStartPosition))
-                if(flower?.position.distance(flowerStartPosition) > 1.5) {
+                if flower?.position.distance(flowerStartPosition) > 1.5 {
                     flower?.runAction(SKAction.moveTo(flowerStartPosition, duration: 0.15))
                     flowerShake = false
                     node.zPosition = 100
-                } else if(flowerShake) {
+                } else if flowerShake {
                     flower?.position = CGPoint(x:flower!.position.x + delta.x/8, y:flower!.position.y + delta.y/8)
                 }
                 
@@ -283,6 +295,7 @@ class FlowerGame: SKScene {
                     //println(delta)
                 }
                 
+                node.zPosition = 100
                 node.name = "staccato"
                 flower?.runAction(SKAction.moveTo(flowerStartPosition, duration: 0.15))
                 showIntermediateResult()
